@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/ElfOnTheShelf.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleMesh" id=1]
+mid_height = 3.0
+
+[node name="ElfOnTheShelf" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+aabb = AABB( -1, -2.54874, -1, 2, 5.09747, 2 )
+
+[node name="Cast Points" type="Spatial" parent="."]
+
+[node name="Spatial" type="Spatial" parent="Cast Points"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.848845, -1.81161, -2.42537 )
+
+[node name="Spatial4" type="Spatial" parent="Cast Points"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.848845, 1.88168, -1.63774 )
+
+[node name="Spatial2" type="Spatial" parent="Cast Points"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0140269, -1.81161, 2.38557 )
+
+[node name="Spatial5" type="Spatial" parent="Cast Points"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20001, 2.13344, -1.40938 )
+
+[node name="Spatial6" type="Spatial" parent="Cast Points"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0140269, 2.13344, 1.74172 )
+
+[node name="Spatial3" type="Spatial" parent="Cast Points"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46777, 1.877, -1.57216 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
