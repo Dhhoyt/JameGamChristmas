@@ -7,7 +7,7 @@ export(float) var friction : float = 50
 export(float) var air_coeff : float = 0.25
 export(float) var jump_speed : float = 7
 
-export(float) var max_walk_speed : float = 10
+export(float) var max_walk_speed : float = 3
 export(float) var walk_accel : float = 50
 
 export(float) var max_run_speed : float = 30
@@ -18,6 +18,8 @@ export(float) var crouch_accel : float = 50
 
 export(float) var crouch_time : float = 0.3 #how long the animation should take
 export(float) var crouch_coeff : float = 0.5 #how high the hitbox should be as a coefficient of the standing height
+
+export(float) var audio_speed : float = 2
 
 var last_height : float
 
@@ -32,6 +34,8 @@ var crouching : bool = false
 
 var gravity_vector : Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 var gravity_magnitude : int = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+var enemies : Array = []
 
 func _ready():
 	pass
@@ -70,6 +74,8 @@ func _physics_process(delta):
 	velocity = Vector3(walkvector.x, velocity.y, -walkvector.y)
 	velocity = move_and_slide(velocity, Vector3(0, 1, 0), false, 4, 0.785398, false)
 	velocity += (gravity_magnitude * delta) * gravity_vector
+	
+	audio()
 
 func walk(delta, move_accel, max_speed, multiplier):
 	var frame_accel = (move_accel + friction) * multiplier
@@ -112,6 +118,16 @@ func uncrouch_blocked():
 	var result = space_state.intersect_ray(global_transform.origin, new_height, [self])
 	return result.size() != 0
 
+func audio():
+	var vel : Vector2 = Vector2(velocity.x, velocity.z)
+	if vel.length() > audio_speed and not $StepAudioPlayer.playing:
+		$StepAudioPlayer.play()
+	elif vel.length() < audio_speed:
+		$StepAudioPlayer.stop()
+	elif $StepAudioPlayer.playing:
+		for i in enemies:
+			i.noise(global_transform.origin)
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		looking.y -= deg2rad(event.relative.x * sensitivity)
@@ -128,3 +144,6 @@ func set_height(new_height):
 	$Camera.translation.y = cam_stand_height * (new_height/standing_height)/2
 	capsule.set_height(new_height)
 	$CollisionShape.set_shape(capsule)
+
+func add_enemy(new_enemy):
+	enemies.append(new_enemy)
