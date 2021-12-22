@@ -23,7 +23,6 @@ func _ready():
 
 func _process(delta):
 	if within_view():
-		$ChaseTimer.start()
 		state = 0
 		new_spot()
 
@@ -79,8 +78,7 @@ func new_spot():
 		move_to(noise_pos)
 
 func noise(pos, priority):
-	if (pos - global_transform.origin).length() < hearing_dist and priority > current_priority:
-		$NoiseTimer.start()
+	if priority >= current_priority and (pos - global_transform.origin).length() < hearing_dist:
 		state = 1
 		investigated = false
 		move_to(pos)

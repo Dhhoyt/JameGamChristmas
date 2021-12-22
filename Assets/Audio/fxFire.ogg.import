@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fxFire.ogg-2f38184ee117059c0bc3a0db5c21e675.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/fxFire.ogg"
+dest_files=[ "res://.import/fxFire.ogg-2f38184ee117059c0bc3a0db5c21e675.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

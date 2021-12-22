@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/recordSugar.ogg-52a25ea7e3e8e00ea64342ee628cd28e.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/recordSugar.ogg"
+dest_files=[ "res://.import/recordSugar.ogg-52a25ea7e3e8e00ea64342ee628cd28e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
