@@ -26,7 +26,7 @@ navmesh = SubResource( 1 )
 [node name="house" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 2 )]
 
 [node name="Krampus" parent="Navigation" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5468, 5, -4.49016 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5468, 5, 105.331 )
 
 [node name="RandomSpots" type="Spatial" parent="Navigation"]
 

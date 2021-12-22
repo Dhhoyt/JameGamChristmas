@@ -14,6 +14,10 @@ config/name="KrampusGame"
 run/main_scene="res://Scenes/Santa's House.tscn"
 config/icon="res://icon.png"
 
+[global]
+
+import=false
+
 [input]
 
 ui_left={

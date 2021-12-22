@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fxSinkRunning.ogg-62b53861b5649d798c8a3879fdffbd50.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/fxSinkRunning.ogg"
+dest_files=[ "res://.import/fxSinkRunning.ogg-62b53861b5649d798c8a3879fdffbd50.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

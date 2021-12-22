@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/house.fbx-4169c3e62420ac9947102d2cd5ae9af7.scn"
+path="res://.import/house.obj-9fefe75304149df191e91da22638040e.scn"
 
 [deps]
 
-source_file="res://Assets/Models/house.fbx"
-dest_files=[ "res://.import/house.fbx-4169c3e62420ac9947102d2cd5ae9af7.scn" ]
+source_file="res://Assets/Models/house.obj"
+dest_files=[ "res://.import/house.obj-9fefe75304149df191e91da22638040e.scn" ]
 
 [params]
 
@@ -15,7 +15,7 @@ nodes/root_type="Spatial"
 nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
-nodes/storage=1
+nodes/storage=0
 nodes/use_legacy_names=true
 materials/location=1
 materials/storage=1

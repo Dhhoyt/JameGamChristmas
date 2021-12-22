@@ -77,8 +77,8 @@ func new_spot():
 	elif state == 3:
 		move_to(noise_pos)
 
-func noise(pos, priority):
-	if priority >= current_priority and (pos - global_transform.origin).length() < hearing_dist:
+func noise(pos, loudness, priority):
+	if priority >= current_priority and (pos - global_transform.origin).length() * loudness < hearing_dist:
 		state = 1
 		investigated = false
 		move_to(pos)

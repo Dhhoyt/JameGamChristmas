@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fxSinkOn.ogg-77fe9035bfe2a8e2c9fd5aa82613fb40.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/fxSinkOn.ogg"
+dest_files=[ "res://.import/fxSinkOn.ogg-77fe9035bfe2a8e2c9fd5aa82613fb40.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

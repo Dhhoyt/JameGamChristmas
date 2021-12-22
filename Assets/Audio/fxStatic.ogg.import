@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fxStatic.ogg-4d6fba3e001684c536bfa794edfe63b1.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/fxStatic.ogg"
+dest_files=[ "res://.import/fxStatic.ogg-4d6fba3e001684c536bfa794edfe63b1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

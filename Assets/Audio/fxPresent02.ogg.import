@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fxPresent02.ogg-3efba3bbeaf5dbb6027fcc4626781073.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/fxPresent02.ogg"
+dest_files=[ "res://.import/fxPresent02.ogg-3efba3bbeaf5dbb6027fcc4626781073.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

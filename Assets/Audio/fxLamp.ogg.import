@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fxLamp.ogg-ba8f39286e56d0f059cf0cb9629e204c.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/fxLamp.ogg"
+dest_files=[ "res://.import/fxLamp.ogg-ba8f39286e56d0f059cf0cb9629e204c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
