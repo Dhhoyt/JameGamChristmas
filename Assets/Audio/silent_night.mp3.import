@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/silent_night.mp3-1d6895b2ea5b524cd5e75d830c0d6d61.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/silent_night.mp3"
+dest_files=[ "res://.import/silent_night.mp3-1d6895b2ea5b524cd5e75d830c0d6d61.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

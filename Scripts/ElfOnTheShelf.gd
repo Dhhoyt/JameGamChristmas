@@ -23,8 +23,7 @@ func blocked():
 	var space_state = get_world().direct_space_state
 	for i in $"Cast Points".get_children():
 		var result = space_state.intersect_ray(i.global_transform.origin, player.global_transform.origin, [self,player], 2)
-		if result.size() == 0:
-			print(randi())
+		if result.empty():
 			return false
 	return true
 

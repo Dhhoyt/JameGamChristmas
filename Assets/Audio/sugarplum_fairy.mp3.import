@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sugarplum_fairy.mp3-a011b5fc422ff097b9e635dd56090769.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/sugarplum_fairy.mp3"
+dest_files=[ "res://.import/sugarplum_fairy.mp3-a011b5fc422ff097b9e635dd56090769.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

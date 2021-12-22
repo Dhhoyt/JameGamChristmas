@@ -27,19 +27,29 @@ onready var standing_height : float = $CollisionShape.get_shape().get_height()
 onready var cam_stand_height : float = $Camera.translation.y
 onready var radius : float = $CollisionShape.get_shape().get_radius()
 
-var looking : Vector3 = Vector3()
+var looking : Vector3 = Vector3() setget set_looking
+func set_looking(new_looking):
+	looking = new_looking
+	$Camera.rotation.y = looking.y
+	$Camera.rotation.x = looking.x
+	
 var velocity : Vector3 = Vector3()
 
 var crouching : bool = false
+var hiding : bool = false
 
 var gravity_vector : Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 var gravity_magnitude : int = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var enemies : Array = []
 
+var current_hide = null
+
 func _ready():
 	pass
+
 func _physics_process(delta):
+	onscreen_text()
 	if not $Crouch.is_active():
 		if Input.is_action_pressed("player_crouch") and not crouching:
 			crouching = true
@@ -49,6 +59,10 @@ func _physics_process(delta):
 			crouching = false
 			$Crouch.interpolate_method(self, "set_height", standing_height * crouch_coeff, standing_height, crouch_time, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 			$Crouch.start()
+	
+	if hiding and not $Hide.is_active():
+		global_transform.origin = current_hide.get_node("HidingPoint").global_transform.origin
+		return
 	
 	var multiplier : float = 1
 	if !is_on_floor():
@@ -74,7 +88,6 @@ func _physics_process(delta):
 	velocity = Vector3(walkvector.x, velocity.y, -walkvector.y)
 	velocity = move_and_slide(velocity, Vector3(0, 1, 0), false, 4, 0.785398, false)
 	velocity += (gravity_magnitude * delta) * gravity_vector
-	test_for_pickup()
 	audio()
 
 func walk(delta, move_accel, max_speed, multiplier):
@@ -118,16 +131,6 @@ func uncrouch_blocked():
 	var result = space_state.intersect_ray(global_transform.origin, new_height, [self])
 	return result.size() != 0
 
-func test_for_pickup():
-	var space_state = get_world().direct_space_state
-	var result = space_state.intersect_ray(global_transform.origin, $Camera/Pickup.global_transform.origin, [self])
-	if not result.empty() and result["collider"].is_in_group("DollPart"):
-		$"CanvasLayer/Label".text = "Pick up " + result["collider"].name
-		if Input.is_action_just_pressed("player_pickup"):
-			result["collider"].pickup()
-	else:
-		Input.is_action_just_pressed("player_pickup")
-		$"CanvasLayer/Label".text = ""
 
 func audio():
 	var vel : Vector2 = Vector2(velocity.x, velocity.z)
@@ -141,11 +144,11 @@ func audio():
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		looking.y -= deg2rad(event.relative.x * sensitivity)
-		looking.x -= deg2rad(event.relative.y * sensitivity)
-		looking.x = clamp(looking.x, -PI/3, PI/3)
-		$Camera.rotation.y = looking.y
-		$Camera.rotation.x = looking.x
+		var new_looking = looking
+		new_looking.y -= deg2rad(event.relative.x * sensitivity)
+		new_looking.x -= deg2rad(event.relative.y * sensitivity)
+		new_looking.x = clamp(new_looking.x, -PI/3, PI/3)
+		set_looking(new_looking)
 
 func set_height(new_height):
 	if last_height > new_height:
@@ -156,5 +159,44 @@ func set_height(new_height):
 	capsule.set_height(new_height)
 	$CollisionShape.set_shape(capsule)
 
+func onscreen_text():
+	if hiding:
+		$"CanvasLayer/Label".text = "Click to get out"
+		if Input.is_action_just_pressed("player_interact"):
+			do_hide(current_hide)
+		return
+	var space_state = get_world().direct_space_state
+	var result = space_state.intersect_ray($Camera.global_transform.origin, $Camera/Pickup.global_transform.origin, [self])
+	if not result.empty():
+		if result["collider"].is_in_group("DollPart"):
+			$"CanvasLayer/Label".text = "Pick up " + result["collider"].name
+			if Input.is_action_just_pressed("player_interact"):
+				result["collider"].pickup()
+		elif result["collider"].is_in_group("Hideable"):
+			$"CanvasLayer/Label".text = "Hide in " + result["collider"].name
+			if Input.is_action_just_pressed("player_interact"):
+				do_hide(result["collider"])
+		else:
+			Input.is_action_just_pressed("player_interact")
+			$"CanvasLayer/Label".text = ""
+	else:
+		Input.is_action_just_pressed("player_interact")
+		$"CanvasLayer/Label".text = ""
+
+
 func add_enemy(new_enemy):
 	enemies.append(new_enemy)
+
+func do_hide(hiding_space):
+	print("Stuff")
+	if not $Hide.is_active() and not hiding:
+		current_hide = hiding_space
+		hiding = true
+		$Hide.interpolate_property(self, "looking", looking, hiding_space.get_node("HidingPoint").global_transform.basis.get_euler(), 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Hide.interpolate_property(self, "translation", global_transform.origin, hiding_space.get_node("HidingPoint").global_transform.origin, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Hide.start()
+	elif not $Hide.is_active() and hiding:
+		hiding = false
+		$Hide.interpolate_property(self, "looking", looking, hiding_space.get_node("GetoutPoint").global_transform.basis.get_euler(), 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Hide.interpolate_property(self, "translation", global_transform.origin, hiding_space.get_node("GetoutPoint").global_transform.origin, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Hide.start()
