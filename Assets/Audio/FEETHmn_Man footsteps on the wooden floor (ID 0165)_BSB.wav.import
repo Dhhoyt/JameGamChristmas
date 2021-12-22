@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/FEETHmn_Man footsteps on the wooden floor (ID 0165)_BSB.wav-d6374b131ec28362c49766c4dcb84118.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/FEETHmn_Man footsteps on the wooden floor (ID 0165)_BSB.wav"
+dest_files=[ "res://.import/FEETHmn_Man footsteps on the wooden floor (ID 0165)_BSB.wav-d6374b131ec28362c49766c4dcb84118.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
