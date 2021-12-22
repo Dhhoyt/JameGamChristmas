@@ -74,7 +74,7 @@ func _physics_process(delta):
 	velocity = Vector3(walkvector.x, velocity.y, -walkvector.y)
 	velocity = move_and_slide(velocity, Vector3(0, 1, 0), false, 4, 0.785398, false)
 	velocity += (gravity_magnitude * delta) * gravity_vector
-	
+	test_for_pickup()
 	audio()
 
 func walk(delta, move_accel, max_speed, multiplier):
@@ -117,6 +117,17 @@ func uncrouch_blocked():
 	new_height.y -= standing_height * crouch_coeff
 	var result = space_state.intersect_ray(global_transform.origin, new_height, [self])
 	return result.size() != 0
+
+func test_for_pickup():
+	var space_state = get_world().direct_space_state
+	var result = space_state.intersect_ray(global_transform.origin, $Camera/Pickup.global_transform.origin, [self])
+	if not result.empty() and result["collider"].is_in_group("DollPart"):
+		$"CanvasLayer/Label".text = "Pick up " + result["collider"].name
+		if Input.is_action_just_pressed("player_pickup"):
+			result["collider"].pickup()
+	else:
+		Input.is_action_just_pressed("player_pickup")
+		$"CanvasLayer/Label".text = ""
 
 func audio():
 	var vel : Vector2 = Vector2(velocity.x, velocity.z)

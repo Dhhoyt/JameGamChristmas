@@ -26,3 +26,17 @@ playback_process_mode = 0
 
 [node name="StepAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Joe Nuts"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
