@@ -170,23 +170,32 @@ func onscreen_text():
 	var result = space_state.intersect_ray($Camera.global_transform.origin, $Camera/Pickup.global_transform.origin, [self])
 	if not result.empty():
 		if result["collider"].is_in_group("DollPart"):
-			$"CanvasLayer/Label".text = "Click to pick up " + result["collider"].name
+			$"CanvasLayer/Label".text = "Click to pick up" 
 			if Input.is_action_just_pressed("player_interact"):
 				result["collider"].pickup()
 		elif result["collider"].is_in_group("Hideable") and result["collider"].is_in_group("Moveable"):
-			$"CanvasLayer/Label".text = "Press H to hide in " + result["collider"].name + "\n Click to move"
+			$"CanvasLayer/Label".text = "Press H to hide\n Click to move"
 			if Input.is_action_just_pressed("player_hide"):
 				do_hide(result["collider"])
 			if Input.is_action_just_pressed("player_interact"):
 				result["collider"].move()
 		elif result["collider"].is_in_group("Hideable"):
-			$"CanvasLayer/Label".text = "Press H to hide in " + result["collider"].name
+			$"CanvasLayer/Label".text = "Press H to hide"
 			if Input.is_action_just_pressed("player_hide"):
 				do_hide(result["collider"])
 		elif result["collider"].is_in_group("Moveable"):
-			$"CanvasLayer/Label".text = "Click to move " + result["collider"].name
+			$"CanvasLayer/Label".text = "Click to move"
 			if Input.is_action_just_pressed("player_interact"):
 				result["collider"].move()
+		elif result["collider"].is_in_group("Noisy"):
+			if result["collider"].playing == false:
+				$"CanvasLayer/Label".text = "Click to make noise"
+				if Input.is_action_just_pressed("player_interact"):
+					get_parent().add_noisy(result["collider"])
+			else: 
+				$"CanvasLayer/Label".text = "Click to stop noise"
+				if Input.is_action_just_pressed("player_interact"):
+					get_parent().remove_noisy(result["collider"])
 		else:
 			Input.is_action_just_pressed("player_interact")
 			$"CanvasLayer/Label".text = ""
