@@ -3,6 +3,9 @@
 [ext_resource path="res://Scripts/Krampus.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Models/Krampus/krampus.glb" type="PackedScene" id=2]
 
+[sub_resource type="CapsuleMesh" id=1]
+radius = 0.5
+
 [node name="Krampus" type="KinematicBody"]
 script = ExtResource( 1 )
 
