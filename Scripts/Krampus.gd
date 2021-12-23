@@ -46,6 +46,7 @@ func _physics_process(delta):
 
 func move_to(target_pos):
 	path = nav.get_node("DetourNavigationMesh").find_path(global_transform.origin, target_pos)["points"]
+	print(randi())
 	path_node = 0
 	
 func within_view():
@@ -67,19 +68,13 @@ func new_spot():
 	if state == 0:
 		move_to(player.global_transform.origin)
 	elif state == 1:
-		if investigated:
-			state = 2
-			move_to(random_spot())
-		else:
-			investigated = true
-			move_to(noise_pos)
+		state = 2
+		move_to(random_spot())
 	elif state == 2:
 		move_to(random_spot())
-	elif state == 3:
-		move_to(noise_pos)
 
 func noise(pos, loudness, priority):
-	if priority >= current_priority and (pos - global_transform.origin).length() * (1/loudness) < hearing_dist:
+	if priority >= current_priority and (pos - global_transform.origin).length() * (1/loudness) < hearing_dist and not state == 0:
+		current_priority = priority
 		state = 1
-		investigated = false
 		move_to(pos)
