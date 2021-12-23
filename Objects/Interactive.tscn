@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/MoveableCloset.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Models/House/Interactive.glb" type="PackedScene" id=2]
+
+[node name="Interactive" instance=ExtResource( 2 )]
+
+[node name="Closet2" parent="InteractiveObjects" index="7"]
+script = ExtResource( 1 )
+
+[node name="Closet2001" parent="InteractiveObjects" index="8"]
+script = ExtResource( 1 )
+
+[node name="Closet2002" parent="InteractiveObjects" index="9"]
+script = ExtResource( 1 )
+
+[node name="Closet2003" parent="InteractiveObjects" index="10"]
+script = ExtResource( 1 )

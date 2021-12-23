@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/godot-navigation-lite/bin/detour_navigation.gdns" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://addons/godot-navigation-lite/bin/navigation.gdnlib" type="GDNativeLibrary" id=5]
 [ext_resource path="res://Objects/Enemy/Krampus.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Santa's House.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Models/House/Interactive.glb" type="PackedScene" id=8]
 
 [sub_resource type="NativeScript" id=1]
 class_name = "DetourNavigationMesh"
@@ -737,6 +738,8 @@ serialized_navmesh_data = PoolByteArray( 84, 69, 83, 77, 1, 0, 0, 0, 6, 0, 0, 0,
 debug_mesh_color = Color( 1, 0.0313726, 0.0313726, 1 )
 parameters = SubResource( 48 )
 debug_mesh = SubResource( 154 )
+
+[node name="Interactive" parent="DetourNavigation" instance=ExtResource( 8 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.79378, -2.28481 )

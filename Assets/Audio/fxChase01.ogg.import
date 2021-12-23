@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fxChase01.ogg-4177e1fdbb3e412aa1ca918e11fa7e39.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/fxChase01.ogg"
+dest_files=[ "res://.import/fxChase01.ogg-4177e1fdbb3e412aa1ca918e11fa7e39.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
