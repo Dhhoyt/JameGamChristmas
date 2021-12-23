@@ -140,7 +140,7 @@ func audio():
 		$StepAudioPlayer.stop()
 	elif $StepAudioPlayer.playing:
 		for i in enemies:
-			i.noise(global_transform.origin, 1, 3)	
+			i.noise(global_transform.origin, 0.0001, 3)	
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -169,13 +169,23 @@ func onscreen_text():
 	var result = space_state.intersect_ray($Camera.global_transform.origin, $Camera/Pickup.global_transform.origin, [self])
 	if not result.empty():
 		if result["collider"].is_in_group("DollPart"):
-			$"CanvasLayer/Label".text = "Pick up " + result["collider"].name
+			$"CanvasLayer/Label".text = "Click to pick up " + result["collider"].name
 			if Input.is_action_just_pressed("player_interact"):
 				result["collider"].pickup()
-		elif result["collider"].is_in_group("Hideable"):
-			$"CanvasLayer/Label".text = "Hide in " + result["collider"].name
-			if Input.is_action_just_pressed("player_interact"):
+		elif result["collider"].is_in_group("Hideable") and result["collider"].is_in_group("Moveable"):
+			$"CanvasLayer/Label".text = "Press H to hide in " + result["collider"].name + "\n Click to move"
+			if Input.is_action_just_pressed("player_hide"):
 				do_hide(result["collider"])
+			if Input.is_action_just_pressed("player_interact"):
+				result["collider"].move()
+		elif result["collider"].is_in_group("Hideable"):
+			$"CanvasLayer/Label".text = "Press H to hide in " + result["collider"].name
+			if Input.is_action_just_pressed("player_hide"):
+				do_hide(result["collider"])
+		elif result["collider"].is_in_group("Moveable"):
+			$"CanvasLayer/Label".text = "Click to move " + result["collider"].name
+			if Input.is_action_just_pressed("player_interact"):
+				result["collider"].move()
 		else:
 			Input.is_action_just_pressed("player_interact")
 			$"CanvasLayer/Label".text = ""

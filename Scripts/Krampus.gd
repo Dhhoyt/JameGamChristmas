@@ -10,8 +10,8 @@ var fov = cos(PI/4)
 var investigated = false
 var state = 2 #0 = chase 1 = investigating 2 = wander
 
-onready var nav = get_parent()
-onready var player = $"../../Player"
+onready var nav = $"../DetourNavigation"
+onready var player = $"../Player"
 onready var spots = $"../RandomSpots"
 
 var current_priority = 0
@@ -27,8 +27,8 @@ func _process(delta):
 		new_spot()
 
 func _physics_process(delta):
-	var direction = (path[path_node] - global_transform.origin)
 	if path_node < path.size():
+		var direction = (path[path_node] - global_transform.origin)
 		if direction.length() < 1:
 			path_node += 1
 			if path_node >= path.size():
@@ -37,14 +37,15 @@ func _physics_process(delta):
 					state = 2
 				current_priority = 0
 				new_spot()
+				return
+		direction = (path[path_node] - global_transform.origin)
+		move_and_slide(direction.normalized() * speed, Vector3.UP)
 	else:
 		new_spot()
-	direction = (path[path_node] - global_transform.origin)
-	move_and_slide(direction.normalized() * speed, Vector3.UP)
 
 
 func move_to(target_pos):
-	path = nav.get_simple_path(global_transform.origin, target_pos)
+	path = nav.get_node("DetourNavigationMesh").find_path(global_transform.origin, target_pos)["points"]
 	path_node = 0
 	
 func within_view():
@@ -78,7 +79,7 @@ func new_spot():
 		move_to(noise_pos)
 
 func noise(pos, loudness, priority):
-	if priority >= current_priority and (pos - global_transform.origin).length() * loudness < hearing_dist:
+	if priority >= current_priority and (pos - global_transform.origin).length() * (1/loudness) < hearing_dist:
 		state = 1
 		investigated = false
 		move_to(pos)
