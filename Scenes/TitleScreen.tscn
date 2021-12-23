@@ -109,10 +109,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -496.0
-margin_top = -271.0
-margin_right = 496.0
-margin_bottom = 271.0
+margin_left = -480.0
+margin_top = -255.0
+margin_right = 480.0
+margin_bottom = 258.0
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[center]Credits[/center]
@@ -245,5 +245,4 @@ __meta__ = {
 transform = Transform( -0.73942, 0, 0.673245, 0, 1, 0, -0.673245, 0, -0.73942, -6.32565, 0.676197, -5.8171 )
 
 [node name="House" parent="." instance=ExtResource( 2 )]
-
 [connection signal="pressed" from="CanvasLayer/Screen/Button" to="." method="switch_scene" binds= [ "res://Scenes/Santa's House.tscn" ]]
