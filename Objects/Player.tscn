@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/FEETHmn_Man footsteps on the wooden floor (ID 0165)_BSB.wav" type="AudioStream" id=2]
 [ext_resource path="res://default_env.tres" type="Environment" id=3]
+[ext_resource path="res://Assets/UI/MediumFont.tres" type="DynamicFont" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -36,7 +37,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Joe Nuts"
+custom_fonts/font = ExtResource( 4 )
+text = "
+"
 align = 1
 valign = 1
 __meta__ = {
@@ -44,3 +47,8 @@ __meta__ = {
 }
 
 [node name="Hide" type="Tween" parent="."]
+
+[node name="Flashlight" type="Spatial" parent="."]
+
+[node name="SpotLight" type="SpotLight" parent="Flashlight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305715, 0.215107, -0.627 )

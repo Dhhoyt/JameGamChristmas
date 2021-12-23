@@ -7,19 +7,19 @@ export(float) var friction : float = 50
 export(float) var air_coeff : float = 0.25
 export(float) var jump_speed : float = 7
 
-export(float) var max_walk_speed : float = 3
+export(float) var max_walk_speed : float = 2
 export(float) var walk_accel : float = 50
 
-export(float) var max_run_speed : float = 30
+export(float) var max_run_speed : float = 4
 export(float) var run_accel : float = 50
 
-export(float) var max_crouch_speed : float = 5
+export(float) var max_crouch_speed : float = .5
 export(float) var crouch_accel : float = 50
 
 export(float) var crouch_time : float = 0.3 #how long the animation should take
 export(float) var crouch_coeff : float = 0.5 #how high the hitbox should be as a coefficient of the standing height
 
-export(float) var audio_speed : float = 2
+export(float) var audio_speed : float = 1
 
 var last_height : float
 
@@ -32,6 +32,7 @@ func set_looking(new_looking):
 	looking = new_looking
 	$Camera.rotation.y = looking.y
 	$Camera.rotation.x = looking.x
+	$Flashlight.rotation.y = looking.y
 	
 var velocity : Vector3 = Vector3()
 
@@ -134,7 +135,7 @@ func uncrouch_blocked():
 
 func audio():
 	var vel : Vector2 = Vector2(velocity.x, velocity.z)
-	if vel.length() > audio_speed and not $StepAudioPlayer.playing:
+	if vel.length() >= audio_speed and not $StepAudioPlayer.playing and not crouching:
 		$StepAudioPlayer.play()
 	elif vel.length() < audio_speed:
 		$StepAudioPlayer.stop()
