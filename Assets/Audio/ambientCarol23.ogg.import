@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ambientCarol23.ogg-1477306e8f79d1b33879a9023d8d38bf.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/ambientCarol23.ogg"
+dest_files=[ "res://.import/ambientCarol23.ogg-1477306e8f79d1b33879a9023d8d38bf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
