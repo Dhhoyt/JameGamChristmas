@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/FEETHmn_Man footsteps on the wooden floor (ID 0165)_BSB.wav" type="AudioStream" id=2]
+[ext_resource path="res://default_env.tres" type="Environment" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -16,6 +17,7 @@ shape = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.441033, 0 )
+environment = ExtResource( 3 )
 current = true
 
 [node name="Pickup" type="Spatial" parent="Camera"]
