@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fxScare04.ogg-f730fec6028494898717f02fdce301fd.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/fxScare04.ogg"
+dest_files=[ "res://.import/fxScare04.ogg-f730fec6028494898717f02fdce301fd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

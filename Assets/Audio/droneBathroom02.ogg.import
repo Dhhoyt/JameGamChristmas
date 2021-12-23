@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/droneBathroom02.ogg-7ce9b51594ece5d5d1dd2bf51e9156d8.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/droneBathroom02.ogg"
+dest_files=[ "res://.import/droneBathroom02.ogg-7ce9b51594ece5d5d1dd2bf51e9156d8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

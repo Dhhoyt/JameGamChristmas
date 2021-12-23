@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fxDryerOn.ogg-f31f771f05c3851acd7078389b4feb72.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/fxDryerOn.ogg"
+dest_files=[ "res://.import/fxDryerOn.ogg-f31f771f05c3851acd7078389b4feb72.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
