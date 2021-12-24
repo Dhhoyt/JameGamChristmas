@@ -1,7 +1,7 @@
 extends Panel
 export(NodePath) var itemBarPath
 export(NodePath) var playerPath
-
+signal doll_built
 var itemBar
 var player
 var itemTitles = ["Doll", "Broom", "Buttons", "Cotton", "Shirt", "Trousers", "Shoes"]
@@ -22,6 +22,7 @@ func add_item(item):
 	get_node(item.title).texture_normal = item.get_image()
 	itemsCollected += 1
 	if itemsCollected >= 7:
+		emit_signal("doll_built")
 		itemBar.add_item(load("res://Objects/Items/FinishedDoll.tscn").instance())
 		$Doll.texture_normal = CIRCLE
 		$Broom.texture_normal = CIRCLE
