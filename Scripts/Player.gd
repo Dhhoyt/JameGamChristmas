@@ -202,6 +202,7 @@ func onscreen_text():
 		elif result["collider"].is_in_group("Hideable"):
 			$"CanvasLayer/Label".text = "Press H to hide"
 			if Input.is_action_just_pressed("player_hide"):
+				print("f")
 				do_hide(result["collider"])
 		elif result["collider"].is_in_group("Moveable"):
 			$"CanvasLayer/Label".text = "Click to open"
@@ -228,18 +229,23 @@ func add_enemy(new_enemy):
 	enemies.append(new_enemy)
 
 func do_hide(hiding_space):
-	print("Stuff")
-	if not $Hide.is_active() and not hiding:
+	print("t")
+	if $Hide.is_active():
+		return
+	if not hiding and not getting_in:
 		getting_in = true
 		current_hide = hiding_space
 		$Hide.interpolate_property(self, "looking", looking, hiding_space.get_node("HidingPoint").global_transform.basis.get_euler(), 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Hide.interpolate_property(self, "translation", global_transform.origin, hiding_space.get_node("HidingPoint").global_transform.origin, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Hide.start()
-	elif not $Hide.is_active() and hiding:
+	else:
 		hiding = false
 		$Hide.interpolate_property(self, "looking", looking, hiding_space.get_node("GetoutPoint").global_transform.basis.get_euler(), 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Hide.interpolate_property(self, "translation", global_transform.origin, hiding_space.get_node("GetoutPoint").global_transform.origin, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Hide.start()
 
 func _on_Hide_tween_all_completed():
-	hiding = true
+	if getting_in:
+		print("g")
+		getting_in = false
+		hiding = true

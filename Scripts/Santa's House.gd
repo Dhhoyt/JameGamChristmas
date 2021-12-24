@@ -16,6 +16,7 @@ func remove_noisy(new_noisy):
 	
 func _process(delta):
 	if $Krampus.state == 0:
+		$ChaseTimer.start()
 		$"Sound Effects/Ambient".stop()
 		if not $"Sound Effects/Chase".playing:
 			$"Sound Effects/Chase".stream = chaseSounds[randi()%len(chaseSounds)]
@@ -25,8 +26,11 @@ func _process(delta):
 			if not $"Sound Effects/Ambient".playing:
 				if $"Sound Effects/AmbientTimer".time_left <= 0:
 					$"Sound Effects/AmbientTimer".start(randi()%3)
-	if $Krampus.global_transform.origin.distance_to($Player.global_transform.origin) < 0.75:
-		print("caught")
+		else:
+			if not $SoundTween.is_active():
+				$SoundTween.interpolate_property($"Sound Effects/Chase", "volume_db", 0, -60, 10)
+				$SoundTween.start()
+	if not $ChaseTimer.paused and $Krampus.global_transform.origin.distance_to($Player.global_transform.origin) < 0.75:
 		switch_scene("res://Scenes/Jumpscare.tscn")
 func play_ambient():
 	$"Sound Effects/Ambient".stream = ambientSounds[randi()%len(ambientSounds)]
@@ -40,7 +44,10 @@ func _physics_process(delta):
 func switch_scene(scene):
 	get_tree().change_scene(scene)
 
-func _on_Timer_timeout():
-	print($Krampus.state)
+func _on_SoundTween_tween_all_completed():
+	$"Sound Effects/Chase".stop()
+
+func _on_noisetimer_timeout():
 	for i in noiseies:
 		$Krampus.noise(i.global_transform.origin, 100000, 2)
+

@@ -270,6 +270,7 @@ __meta__ = {
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -0.73942, 0, 0.673245, 0, 1, 0, -0.673245, 0, -0.73942, -6.32565, 0.676197, -5.8171 )
+current = true
 
 [node name="House" parent="." instance=ExtResource( 2 )]
 

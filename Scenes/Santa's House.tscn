@@ -937,10 +937,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61025, 2.63366, -2.70355 )
 [node name="Position3D18" type="Position3D" parent="RandomSpots"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0908537, 2.63366, -1.29728 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="noisetimer" type="Timer" parent="."]
 wait_time = 0.449
 autostart = true
 
 [node name="Sound Effects" parent="." instance=ExtResource( 8 )]
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[node name="SoundTween" type="Tween" parent="."]
+
+[node name="ChaseTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="noisetimer" to="." method="_on_noisetimer_timeout"]
+[connection signal="tween_all_completed" from="SoundTween" to="." method="_on_SoundTween_tween_all_completed"]
