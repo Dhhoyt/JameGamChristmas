@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/UI/MediumFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Scenes/House.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/House.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/UI/SmallFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scripts/SceneController.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/ButtonPanel.gd" type="Script" id=5]
@@ -185,6 +185,9 @@ Addition Models Used:
 [url]https://opengameart.org/content/furniture-low-poly[/url]
 [url]https://rallba.itch.io/rallbas-low-poly-bathroom-pack-1[/url]
 
+Icons:
+[url]https://game-icons.net/[/url]
+
 Fonts:
 [url]https://www.fontspace.com/dynastium-font-f32031[/url]
 
@@ -247,6 +250,9 @@ Johnny Richardson: Theme Song
 Addition Models Used:
 https://opengameart.org/content/furniture-low-poly
 https://rallba.itch.io/rallbas-low-poly-bathroom-pack-1
+
+Icons:
+https://game-icons.net/
 
 Fonts:
 https://www.fontspace.com/dynastium-font-f32031
@@ -397,7 +403,6 @@ current = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 autoplay = true
-
 [connection signal="pressed" from="CanvasLayer/Screen/Button" to="." method="switch_scene" binds= [ "res://Scenes/Santa's House.tscn" ]]
 [connection signal="pressed" from="CanvasLayer/Screen/Button3" to="CanvasLayer/Screen/Credits" method="show"]
 [connection signal="pressed" from="CanvasLayer/Screen/Button4" to="CanvasLayer/Screen/HowTo" method="show"]

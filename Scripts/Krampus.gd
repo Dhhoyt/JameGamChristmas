@@ -3,7 +3,8 @@ extends KinematicBody
 var path = []
 var path_node = 0
 
-var speed = 2
+var speed = 1.5
+var chase_speed = 2
 var hearing_dist = 5
 var fov = cos(PI/2)
 
@@ -67,7 +68,7 @@ func _process(delta):
 func _physics_process(delta):
 	if path_node < path.size():
 		var direction = (path[path_node] - global_transform.origin)
-		if direction.length() < delta * speed * 1.2:
+		if direction.length() < delta * (chase_speed if (state == 0) else speed) * 1.2:
 			path_node += 1
 			if path_node >= path.size():
 				path_node = 0
@@ -77,7 +78,7 @@ func _physics_process(delta):
 				new_spot()
 				return
 		direction = (path[path_node] - global_transform.origin)
-		move_and_slide(direction.normalized() * speed, Vector3.UP)
+		move_and_slide(direction.normalized() * (chase_speed if (state == 0) else speed), Vector3.UP)
 	else:
 		new_spot()
 

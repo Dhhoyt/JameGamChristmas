@@ -12,6 +12,8 @@ export(float) var walk_accel : float = 50
 
 export(float) var max_run_speed : float = 4
 export(float) var run_accel : float = 50
+export(float) var max_stamina : float = 5
+export(float) var stamina_recharge : float = 1
 
 export(float) var max_crouch_speed : float = .5
 export(float) var crouch_accel : float = 50
@@ -45,6 +47,7 @@ var getting_in : bool = false
 var in_inventory : bool = false
 var inventory_type : int = 0
 var doll_placed : bool = false
+var current_stamina : float = 5
 
 var gravity_vector : Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 var gravity_magnitude : int = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -54,6 +57,7 @@ var enemies : Array = []
 var current_hide = null
 
 func _ready():
+	current_stamina = max_stamina
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/FinishedDoll.tscn").instance())
 
@@ -83,9 +87,10 @@ func _physics_process(delta):
 		if crouching:
 			move_accel = crouch_accel
 			max_speed = max_crouch_speed
-		elif Input.is_action_pressed("player_run"):
+		elif Input.is_action_pressed("player_run") and current_stamina > 0:
 			move_accel = run_accel
 			max_speed = max_run_speed
+			current_stamina -= delta
 		else:
 			move_accel = walk_accel
 			max_speed = max_walk_speed
@@ -103,6 +108,10 @@ func _physics_process(delta):
 		$Flashlight.show()
 	else:
 		$Flashlight.hide()
+	if velocity.length_squared() <= 2:
+		if current_stamina < max_stamina:
+			current_stamina += stamina_recharge * delta
+	$CanvasLayer/SprintBar.rect_scale = Vector2(current_stamina/max_stamina, 1)
 
 func walk(delta, move_accel, max_speed, multiplier):
 	var frame_accel = (move_accel + friction) * multiplier

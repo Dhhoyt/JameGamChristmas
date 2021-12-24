@@ -438,6 +438,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SprintBar" type="ColorRect" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -160.0
+margin_top = -104.0
+margin_right = 160.0
+margin_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Hide" type="Tween" parent="."]
 
 [node name="Flashlight" type="Spatial" parent="."]
@@ -448,7 +464,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305715, 0.215107, -0.627 )
 [node name="OmniLight" type="OmniLight" parent="."]
 light_energy = 0.2
 omni_range = 1.46242
-
 [connection signal="pressed" from="CanvasLayer/ItemBar/Item1" to="." method="item_pressed" binds= [ 0 ]]
 [connection signal="pressed" from="CanvasLayer/ItemBar/Item2" to="." method="item_pressed" binds= [ 1 ]]
 [connection signal="pressed" from="CanvasLayer/ItemBar/Item3" to="." method="item_pressed" binds= [ 2 ]]

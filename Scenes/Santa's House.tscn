@@ -778,25 +778,25 @@ surfaces/0 = {
 "vertex_count": 2156
 }
 
-[sub_resource type="BoxShape" id=62]
+[sub_resource type="BoxShape" id=60]
 extents = Vector3( 0.287111, 0.286556, 0.294882 )
 
-[sub_resource type="BoxShape" id=63]
+[sub_resource type="BoxShape" id=61]
 extents = Vector3( 0.21543, 0.806876, 0.376067 )
 
-[sub_resource type="BoxShape" id=64]
+[sub_resource type="BoxShape" id=62]
 extents = Vector3( 0.34569, 0.771313, 0.201558 )
 
-[sub_resource type="BoxShape" id=65]
+[sub_resource type="BoxShape" id=63]
 extents = Vector3( 0.282131, 0.29979, 0.705953 )
 
-[sub_resource type="BoxShape" id=66]
+[sub_resource type="BoxShape" id=64]
 extents = Vector3( 0.25812, 0.286556, 0.678596 )
 
-[sub_resource type="BoxShape" id=67]
+[sub_resource type="BoxShape" id=65]
 extents = Vector3( 0.264134, 0.286556, 0.705182 )
 
-[sub_resource type="BoxShape" id=68]
+[sub_resource type="BoxShape" id=66]
 extents = Vector3( 0.290802, 0.286556, 0.69666 )
 
 [node name="Spatial" type="Spatial"]
@@ -903,11 +903,11 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.4, 2
 
 [node name="CollisionShape" type="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/Bedside Table001/InventoryCollider2" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00930572, 0 )
-shape = SubResource( 62 )
+shape = SubResource( 60 )
 
 [node name="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/BookCase/InventoryCollider" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.051774, 0.766082, 0 )
-shape = SubResource( 63 )
+shape = SubResource( 61 )
 
 [node name="BookCaseBooks" parent="DetourNavigation/Interactive/InteractiveObjects" index="3"]
 transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, -4.60002, 1.99815, -5.40191 )
@@ -917,14 +917,14 @@ transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/BookCaseBooks/InventoryCollider" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.704875, 0 )
-shape = SubResource( 64 )
+shape = SubResource( 62 )
 
 [node name="InventoryCollider" parent="DetourNavigation/Interactive/InteractiveObjects/Desk" index="0"]
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, -0.117235, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/Desk/InventoryCollider" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00607872, 0.404152, -0.00366294 )
-shape = SubResource( 65 )
+shape = SubResource( 63 )
 
 [node name="Desk001" parent="DetourNavigation/Interactive/InteractiveObjects" index="15"]
 itemPaths = [ "res://Objects/Items/Books.tscn", "res://Objects/Items/Buttons.tscn" ]
@@ -934,15 +934,15 @@ itemPaths = [ "res://Objects/Items/Broom.tscn" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/Desk002/InventoryCollider2" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.299827, -0.102019 )
-shape = SubResource( 66 )
+shape = SubResource( 64 )
 
 [node name="CollisionShape" type="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/Desk003/InventoryCollider3" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.290875, -0.124682 )
-shape = SubResource( 67 )
+shape = SubResource( 65 )
 
 [node name="CollisionShape" type="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/Desk004/InventoryCollider4" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.288244, -0.104591 )
-shape = SubResource( 68 )
+shape = SubResource( 66 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.62546, 2.60842, -6.7224 )
@@ -1023,45 +1023,62 @@ one_shot = true
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.51059, 0, -2.67276 )
 stream = ExtResource( 11 )
+autoplay = true
 
 [node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.54033, 0, -2.67276 )
 stream = ExtResource( 11 )
+autoplay = true
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24618, 2.86349, -2.67276 )
 stream = ExtResource( 11 )
+autoplay = true
 
 [node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.07334, 2.86349, -10.226 )
 stream = ExtResource( 15 )
+autoplay = true
 
 [node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.17681, 0.533019, -9.67873 )
 stream = ExtResource( 13 )
+autoplay = true
 
 [node name="AudioStreamPlayer3D6" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25243, 0.533019, -4.3609 )
 stream = ExtResource( 12 )
+autoplay = true
 
 [node name="AudioStreamPlayer3D7" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.228708, 3.76976, -10.6508 )
 stream = ExtResource( 14 )
-
+autoplay = true
 [connection signal="doll_placed" from="Player" to="." method="on_doll_placed"]
 [connection signal="doll_built" from="Player/CanvasLayer/Building" to="." method="on_doll_built"]
 [connection signal="timeout" from="noisetimer" to="." method="_on_noisetimer_timeout"]
 [connection signal="tween_all_completed" from="SoundTween" to="." method="_on_SoundTween_tween_all_completed"]
 
 [editable path="DetourNavigation/Interactive"]
+
 [editable path="DetourNavigation/Interactive/InteractiveObjects/Bedside Table/InventoryCollider"]
+
 [editable path="DetourNavigation/Interactive/InteractiveObjects/BookCase/InventoryCollider"]
+
 [editable path="DetourNavigation/Interactive/InteractiveObjects/BookCaseLargeBooks/InventoryCollider"]
+
 [editable path="DetourNavigation/Interactive/InteractiveObjects/BookCaseLargeBooks001/InventoryCollider2"]
+
 [editable path="DetourNavigation/Interactive/InteractiveObjects/Desk001/InventoryCollider"]
+
 [editable path="DetourNavigation/Interactive/InteractiveObjects/Fridge/InventoryCollider"]
+
 [editable path="DetourNavigation/Interactive/InteractiveObjects/SinkLv1/StaticBody"]
+
 [editable path="DetourNavigation/Interactive/InteractiveObjects/SinkLv1001/StaticBody2"]
+
 [editable path="DetourNavigation/Interactive/InteractiveObjects/SinkLv1002/StaticBody3"]
+
 [editable path="DetourNavigation/Interactive/InteractiveObjects/SinkLv1003/StaticBody4"]
+
 [editable path="Player"]
