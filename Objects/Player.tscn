@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/FEETHmn_Man footsteps on the wooden floor (ID 0165)_BSB.wav" type="AudioStream" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/UI/Icons/circle.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/ItemBar.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/InventoryArea.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/BuildingArea.gd" type="Script" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -29,7 +30,7 @@ environment = ExtResource( 3 )
 current = true
 
 [node name="Pickup" type="Spatial" parent="Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 
 [node name="Crouch" type="Tween" parent="."]
 playback_process_mode = 0
@@ -288,6 +289,155 @@ rect_min_size = Vector2( 80, 80 )
 texture_normal = ExtResource( 6 )
 expand = true
 
+[node name="Building" type="Panel" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -192.0
+margin_top = -220.0
+margin_right = 192.0
+margin_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+itemBarPath = NodePath("../ItemBar")
+playerPath = NodePath("../..")
+
+[node name="Label" type="Label" parent="CanvasLayer/Building"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -62.5
+margin_top = 30.0
+margin_right = 62.5
+margin_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+text = "Collect All 7 Pieces"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Doll" type="TextureButton" parent="CanvasLayer/Building"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -16.0
+margin_right = 40.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Broom" type="TextureButton" parent="CanvasLayer/Building"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -96.0
+margin_right = 40.0
+margin_bottom = -16.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="TextureButton" parent="CanvasLayer/Building"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = -56.0
+margin_right = -32.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shirt" type="TextureButton" parent="CanvasLayer/Building"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 32.0
+margin_top = -56.0
+margin_right = 112.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cotton" type="TextureButton" parent="CanvasLayer/Building"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = 24.0
+margin_right = -32.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trousers" type="TextureButton" parent="CanvasLayer/Building"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 112.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shoes" type="TextureButton" parent="CanvasLayer/Building"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = 64.0
+margin_right = 40.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Hide" type="Tween" parent="."]
 
 [node name="Flashlight" type="Spatial" parent="."]
@@ -298,9 +448,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305715, 0.215107, -0.627 )
 [node name="OmniLight" type="OmniLight" parent="."]
 light_energy = 0.2
 omni_range = 1.46242
-
-[connection signal="pressed" from="CanvasLayer/ItemBar/Item1" to="CanvasLayer/InventoryArea" method="remove_item_bar" binds= [ 0 ]]
-[connection signal="pressed" from="CanvasLayer/ItemBar/Item2" to="CanvasLayer/InventoryArea" method="remove_item_bar" binds= [ 1 ]]
-[connection signal="pressed" from="CanvasLayer/ItemBar/Item3" to="CanvasLayer/InventoryArea" method="remove_item_bar" binds= [ 2 ]]
-[connection signal="pressed" from="CanvasLayer/ItemBar/Item4" to="CanvasLayer/InventoryArea" method="remove_item_bar" binds= [ 3 ]]
+[connection signal="pressed" from="CanvasLayer/ItemBar/Item1" to="." method="item_pressed" binds= [ 0 ]]
+[connection signal="pressed" from="CanvasLayer/ItemBar/Item2" to="." method="item_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="CanvasLayer/ItemBar/Item3" to="." method="item_pressed" binds= [ 2 ]]
+[connection signal="pressed" from="CanvasLayer/ItemBar/Item4" to="." method="item_pressed" binds= [ 3 ]]
 [connection signal="tween_all_completed" from="Hide" to="." method="_on_Hide_tween_all_completed"]
