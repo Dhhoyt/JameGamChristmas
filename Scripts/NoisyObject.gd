@@ -1,11 +1,6 @@
 extends StaticBody
 
-export(AudioStream) var stream
-
 var playing = false
-
-func _ready():
-	$AudioStreamPlayer3D.stream = stream
 
 func play():
 	$AudioStreamPlayer3D.play()

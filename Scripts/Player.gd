@@ -208,7 +208,7 @@ func onscreen_text():
 			if Input.is_action_just_pressed("player_interact"):
 				result["collider"].move()
 		elif result["collider"].is_in_group("Noisy"):
-			if result["collider"].playing == false:
+			if not result["collider"].playing:
 				$"CanvasLayer/Label".text = "Click to make noise"
 				if Input.is_action_just_pressed("player_interact"):
 					get_parent().add_noisy(result["collider"])
@@ -216,6 +216,7 @@ func onscreen_text():
 				$"CanvasLayer/Label".text = "Click to stop noise"
 				if Input.is_action_just_pressed("player_interact"):
 					get_parent().remove_noisy(result["collider"])
+					print("g")
 		else:
 			Input.is_action_just_pressed("player_interact")
 			$"CanvasLayer/Label".text = ""

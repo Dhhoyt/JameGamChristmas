@@ -822,9 +822,6 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.455,
 [node name="Door18" parent="DetourNavigation/Doors" instance=ExtResource( 10 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.55907, 2, -8.90281 )
 
-[node name="Door19" parent="DetourNavigation/Doors" instance=ExtResource( 10 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.55666, 2, -8.90281 )
-
 [node name="Door20" parent="DetourNavigation/Doors" instance=ExtResource( 10 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.55666, 2, -8.90281 )
 
@@ -882,6 +879,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.4, 2
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.79378, -2.28481 )
 
 [node name="Krampus" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3912, -1.33552 )
 
 [node name="RandomSpots" type="Spatial" parent="."]
 
@@ -940,6 +938,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61025, 2.63366, -2.70355 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0908537, 2.63366, -1.29728 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.449
+autostart = true
 
 [node name="Sound Effects" parent="." instance=ExtResource( 8 )]
 

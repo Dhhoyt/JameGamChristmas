@@ -7,12 +7,13 @@ var ambientSounds = [preload("res://Assets/Audio/ambientBells.ogg"), preload("re
 var krampus_turn_off_dist = 1
 
 func add_noisy(new_noisy):
-	noiseies.append(new_noisy)
+	noiseies.push_front(new_noisy)
 	new_noisy.play()
 	
 func remove_noisy(new_noisy):
 	noiseies.erase(new_noisy)
-	new_noisy.play()
+	new_noisy.stop()
+	
 func _process(delta):
 	if $Krampus.state == 0:
 		$"Sound Effects/Ambient".stop()
@@ -34,5 +35,6 @@ func _physics_process(delta):
 			i.stop()
 
 func _on_Timer_timeout():
+	print($Krampus.state)
 	for i in noiseies:
-		$Krampus.noise(i.global_transform_origin, 100000, 2)
+		$Krampus.noise(i.global_transform.origin, 100000, 2)

@@ -3,9 +3,7 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.5, 0.5, 0.5 )
 
-[node name="Area" type="Area" groups=[
-"Interactable",
-]]
+[node name="Area" type="Area" groups=["Interactable"]]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.529791, 0 )
