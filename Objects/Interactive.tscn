@@ -49,7 +49,7 @@ move_dist = Vector3( 0, 0, -1 )
 
 [node name="Closet2001" parent="InteractiveObjects" index="8"]
 script = ExtResource( 1 )
-move_dist = Vector3( 0, 0, -1.2 )
+move_dist = Vector3( 0, 0, -0.7 )
 
 [node name="Closet2002" parent="InteractiveObjects" index="9"]
 script = ExtResource( 1 )
