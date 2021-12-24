@@ -25,6 +25,9 @@ func _process(delta):
 			if not $"Sound Effects/Ambient".playing:
 				if $"Sound Effects/AmbientTimer".time_left <= 0:
 					$"Sound Effects/AmbientTimer".start(randi()%3)
+	if $Krampus.global_transform.origin.distance_to($Player.global_transform.origin) < 0.75:
+		print("caught")
+		switch_scene("res://Scenes/Jumpscare.tscn")
 func play_ambient():
 	$"Sound Effects/Ambient".stream = ambientSounds[randi()%len(ambientSounds)]
 	$"Sound Effects/Ambient".play()
@@ -33,6 +36,9 @@ func _physics_process(delta):
 		if i.global_transform.origin.distance_to($Krampus.global_transform.origin) < krampus_turn_off_dist:
 			noiseies.erase(i)
 			i.stop()
+
+func switch_scene(scene):
+	get_tree().change_scene(scene)
 
 func _on_Timer_timeout():
 	print($Krampus.state)

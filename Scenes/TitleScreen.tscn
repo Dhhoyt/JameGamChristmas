@@ -276,5 +276,6 @@ transform = Transform( -0.73942, 0, 0.673245, 0, 1, 0, -0.673245, 0, -0.73942, -
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 autoplay = true
+
 [connection signal="pressed" from="CanvasLayer/Screen/Button" to="." method="switch_scene" binds= [ "res://Scenes/Santa's House.tscn" ]]
 [connection signal="pressed" from="CanvasLayer/Screen/Button3" to="CanvasLayer/Screen/Credits" method="show"]

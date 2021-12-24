@@ -129,11 +129,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862156, 0.112 )
 stream = ExtResource( 7 )
 
 [editable path="InteractiveObjects/Desk/Area"]
-
 [editable path="InteractiveObjects/SinkLv1/StaticBody"]
-
 [editable path="InteractiveObjects/SinkLv1001/StaticBody2"]
-
 [editable path="InteractiveObjects/SinkLv1002/StaticBody3"]
-
 [editable path="InteractiveObjects/SinkLv1003/StaticBody4"]

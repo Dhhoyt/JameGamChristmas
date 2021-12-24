@@ -38,6 +38,7 @@ var velocity : Vector3 = Vector3()
 
 var crouching : bool = false
 var hiding : bool = false
+var getting_in : bool = false
 var in_inventory : bool = false
 
 var gravity_vector : Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
@@ -203,7 +204,7 @@ func onscreen_text():
 			if Input.is_action_just_pressed("player_hide"):
 				do_hide(result["collider"])
 		elif result["collider"].is_in_group("Moveable"):
-			$"CanvasLayer/Label".text = "Click to move"
+			$"CanvasLayer/Label".text = "Click to open"
 			if Input.is_action_just_pressed("player_interact"):
 				result["collider"].move()
 		elif result["collider"].is_in_group("Noisy"):
@@ -215,7 +216,6 @@ func onscreen_text():
 				$"CanvasLayer/Label".text = "Click to stop noise"
 				if Input.is_action_just_pressed("player_interact"):
 					get_parent().remove_noisy(result["collider"])
-					print("g")
 		else:
 			Input.is_action_just_pressed("player_interact")
 			$"CanvasLayer/Label".text = ""
@@ -230,8 +230,8 @@ func add_enemy(new_enemy):
 func do_hide(hiding_space):
 	print("Stuff")
 	if not $Hide.is_active() and not hiding:
+		getting_in = true
 		current_hide = hiding_space
-		hiding = true
 		$Hide.interpolate_property(self, "looking", looking, hiding_space.get_node("HidingPoint").global_transform.basis.get_euler(), 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Hide.interpolate_property(self, "translation", global_transform.origin, hiding_space.get_node("HidingPoint").global_transform.origin, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Hide.start()
@@ -240,3 +240,6 @@ func do_hide(hiding_space):
 		$Hide.interpolate_property(self, "looking", looking, hiding_space.get_node("GetoutPoint").global_transform.basis.get_euler(), 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Hide.interpolate_property(self, "translation", global_transform.origin, hiding_space.get_node("GetoutPoint").global_transform.origin, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Hide.start()
+
+func _on_Hide_tween_all_completed():
+	hiding = true

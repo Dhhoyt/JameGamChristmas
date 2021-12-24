@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/Enemy/krampus_scare.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Jumpscare.gd" type="Script" id=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+ambient_light_color = Color( 0.376471, 0.376471, 0.376471, 1 )
+ambient_light_energy = 0.0
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0103756, 1.51973, 0.000983 )
+environment = SubResource( 1 )
+fov = 27.5194
+
+[node name="krampus" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1219, 0, 0 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.395626, 1.5462, 0 )
+spot_range = 7.33963
+spot_angle = 85.2498
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
