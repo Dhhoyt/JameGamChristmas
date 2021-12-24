@@ -1,7 +1,11 @@
 extends MeshInstance
 export var title = "Inventory"
+export var itemPaths = []
+export var capacity = 4
 var items = []
-var capacity = 4
+func _ready():
+	for item in itemPaths:
+		items.append(load(item))
 func add_item(item):
 	if len(items) < capacity:
 		items.append(item)

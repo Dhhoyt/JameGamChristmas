@@ -55,9 +55,9 @@ margin_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource( 4 )
-text = "Kringle
+text = "Krampus
 vs.
-Krampus
+Kringle
 
 "
 align = 1

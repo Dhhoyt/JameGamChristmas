@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/MoveableCloset.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Models/House/Interactive.glb" type="PackedScene" id=2]
@@ -7,8 +7,10 @@
 [ext_resource path="res://Objects/PresentCollider.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/NoisyObject.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Audio/fxSinkRunning.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Scripts/InventoryObject.gd" type="Script" id=8]
+[ext_resource path="res://Objects/InteractiveCollider.tscn" type="PackedScene" id=9]
 
-[sub_resource type="ArrayMesh" id=30]
+[sub_resource type="ArrayMesh" id=1]
 resource_name = "Present"
 surfaces/0 = {
 "aabb": AABB( -0.522827, 0, -0.522827, 1.04565, 1.02141, 1.04565 ),
@@ -61,9 +63,19 @@ move_dist = Vector3( 0, 0, 1 )
 script = ExtResource( 1 )
 move_dist = Vector3( 0, 0, -1 )
 
+[node name="Desk" parent="InteractiveObjects" index="12"]
+script = ExtResource( 8 )
+itemPaths = [ "res://Objects/Items/Flashlight.tscn" ]
+
+[node name="Area" parent="InteractiveObjects/Desk" index="0" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, -0.0267177, 0 )
+
+[node name="CollisionShape" parent="InteractiveObjects/Desk/Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.306177, -0.106965 )
+
 [node name="Present" parent="InteractiveObjects" index="21"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0, -6.5 )
-mesh = SubResource( 30 )
+mesh = SubResource( 1 )
 
 [node name="StaticBody" parent="InteractiveObjects/Present" index="0" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
@@ -116,7 +128,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862156, 0.112 )
 [node name="AudioStreamPlayer3D" parent="InteractiveObjects/SinkLv1003/StaticBody4" index="1"]
 stream = ExtResource( 7 )
 
+[editable path="InteractiveObjects/Desk/Area"]
+
 [editable path="InteractiveObjects/SinkLv1/StaticBody"]
+
 [editable path="InteractiveObjects/SinkLv1001/StaticBody2"]
+
 [editable path="InteractiveObjects/SinkLv1002/StaticBody3"]
+
 [editable path="InteractiveObjects/SinkLv1003/StaticBody4"]
