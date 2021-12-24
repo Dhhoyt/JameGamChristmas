@@ -321,5 +321,4 @@ __meta__ = {
 transform = Transform( -0.73942, 0, 0.673245, 0, 1, 0, -0.673245, 0, -0.73942, -6.32565, 0.676197, -5.8171 )
 
 [node name="House" parent="." instance=ExtResource( 2 )]
-
 [connection signal="pressed" from="CanvasLayer/Screen/Button" to="." method="switch_scene" binds= [ "res://Scenes/Santa's House.tscn" ]]

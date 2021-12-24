@@ -738,6 +738,8 @@ debug_mesh_color = Color( 1, 0.0313726, 0.0313726, 1 )
 parameters = SubResource( 48 )
 debug_mesh = SubResource( 154 )
 
+[node name="Doors" type="Spatial" parent="DetourNavigation"]
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.79378, -2.28481 )
 

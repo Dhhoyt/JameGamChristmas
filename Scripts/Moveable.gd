@@ -1,6 +1,6 @@
 extends MeshInstance
 
-export(Vector3) var move_dist = Vector3(0, 90, 0)
+export(Vector3) var move_dist = Vector3(0, 0, -2)
 
 var moved = false
 

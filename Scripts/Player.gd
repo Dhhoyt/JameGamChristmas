@@ -5,7 +5,7 @@ export(float) var sensitivity : float = 0.2
 export(float) var friction : float = 50
 
 export(float) var air_coeff : float = 0.25
-export(float) var jump_speed : float = 7
+export(float) var jump_speed : float = 0
 
 export(float) var max_walk_speed : float = 2
 export(float) var walk_accel : float = 50
