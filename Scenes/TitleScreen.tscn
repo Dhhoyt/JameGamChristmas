@@ -1,9 +1,11 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Assets/UI/Ghitna.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/House.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/UI/Dynastium-Kjvy.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scripts/SceneController.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/ButtonPanel.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Audio/fxMainTitle.ogg" type="AudioStream" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0588235, 0, 0.00392157, 0.145098 )
@@ -177,6 +179,7 @@ margin_left = -500.0
 margin_top = -279.5
 margin_right = 500.0
 margin_bottom = 270.5
+script = ExtResource( 5 )
 
 [node name="Label" type="RichTextLabel" parent="CanvasLayer/Screen/Credits"]
 anchor_left = 0.5
@@ -193,126 +196,126 @@ bbcode_text = "[center]Credits[/center]
 
 Dallin Hoyt @Dynamism: Programming
 Isaiah Stotesbery @sirstotes: Modeling, UI Design, Level Design
-Ethan Kendrick @ephun: Sound Design
-Johnny R: Theme Song
+Ethan Kendrick @ephun: Sound Design, Addition UI Design
+Johnny Richardson: Theme Song
 
 Addition Models Used:
-[url]https://opengameart.org/content/furniture-low-poly[\\url]
-[url]https://rallba.itch.io/rallbas-low-poly-bathroom-pack-1[\\url]
+[url]https://opengameart.org/content/furniture-low-poly[/url]
+[url]https://rallba.itch.io/rallbas-low-poly-bathroom-pack-1[/url]
 
 Fonts:
-[url]https://www.1001fonts.com/ghitna-font.html[\\url]
-[url]https://www.fontspace.com/dynastium-font-f32031[url]
+[url]https://www.fontspace.com/dynastium-font-f32031[/url]
 
 All music/sounds created or edited from these public domain sources:
-[url]https://musescore.com/user/6171746/scores/5278968[\\url]
-[url]https://musescore.com/user/105039/scores/1319396[\\url]
-[url]https://musescore.com/marcsabatella/bring-a-torch-jeanette-isabella[\\url]
-[url]https://musescore.com/choral/deck-the-halls-charles-wood[\\url]
-[url]https://musescore.com/user/17603181/scores/5357146[\\url]
-[url]https://musescore.com/choral/good-king-wenceslas-geoffrey-shaw[\\url]
-[url]https://musescore.com/choral/hark-the-herald-angels-sing-felix-mendelssohn-adapted-by-william-h_-cummings[\\url]
-[url]https://musescore.com/hymns/here-we-come-a-wassailing-traditional-yorkshire-tune_[\\url]
-[url]https://musescore.com/hymns/i-heard-the-bells-on-christmas-day-john-b_-calkin[\\url]
-[url]https://musescore.com/hymns/i-saw-three-ships-come-sailing-in-richard-w_-adams[\\url]
-[url]https://musescore.com/choral/scores/5782804[\\url]
-[url]https://musescore.com/user/16083/scores/27630[\\url]
-[url]https://musescore.com/julianchambers/jolly-old-st_-nicholas[\\url]
-[url]https://musescore.com/user/131436/scores/144013[\\url]
-[url]https://musescore.com/christmas/o-christmas-tree-version-14-o-tannenbaum-german-folk-song[\\url]
-[url]https://musescore.com/user/11215246/scores/6503544[\\url]
-[url]https://musescore.com/hymns/o-come-o-come-emmanuel-veni-emmanuel-15th-century-processional-of-french-franciscan-nuns-the-setting-for-the-funeral-hymn-libera-me_-arranged-by-thomas-helmore-in-the-hymnal-noted[\\url]
-[url]https://musescore.com/smckl/scores/2930551[\\url]
-[url]https://musescore.com/hymns/o-little-town-of-bethlehem-lewis-h_-redner[\\url]
-[url]https://musescore.com/scherzandomusic/scores/5901253[\\url]
-[url]https://musescore.com/christmas/up-on-the-housetop[\\url]
-[url]https://musescore.com/sfgraf/we-three-kings-of-orient-are-recorder-group[\\url]
-[url]https://musescore.com/user/14651741/scores/3135061[\\url]
-[url]https://www.youtube.com/watch?v=vhnMXSAcopU[\\url]
-[url]https://archive.org/details/christmas_carols_2006_librivox/09_thefirstnoel_cg.mp3[\\url]
-[url]https://upload.wikimedia.org/wikipedia/commons/2/20/Greensleeves.ogg[\\url]
-[url]https://musopen.org/music/2204-the-nutcracker-suite-op-71a/[\\url]
-[url]https://musopen.org/music/31009-silent-night/[\\url]
-[url]https://freesound.org/people/beskhu/sounds/273911/[\\url]
-[url]https://freesound.org/people/speedygonzo/sounds/235712/[\\url]
-[url]https://freesound.org/people/aunrea/sounds/495660/[\\url]
-[url]https://freesound.org/people/kyles/sounds/453793/[\\url]
-[url]https://freesound.org/people/Eipeiknip/sounds/344433/[\\url]
-[url]https://freesound.org/people/Nox_Sound/sounds/486081/[\\url]
-[url]https://freesound.org/people/Pipelenisf/sounds/560346/[\\url]
-[url]https://freesound.org/people/matt_ratz/sounds/541601/[\\url]
-[url]https://freesound.org/people/Bonniefan2004/sounds/571386/[\\url]
-[url]https://freesound.org/people/JoelAudio/sounds/85568/[\\url]
-[url]https://freesound.org/people/MoiraM/sounds/491210/[\\url]
-[url]https://freesound.org/people/mariateresa_garcia/sounds/219719/[\\url]
-[url]https://freesound.org/people/qubodup/sounds/222517/[\\url]
-[url]https://freesound.org/people/ldk1609/sounds/56077/[\\url]
-[url]https://freesound.org/people/malisz99/sounds/411129/[\\url]
-[url]https://freesound.org/people/Magmi.Soundtracks/sounds/475737/[\\url]
-[url]https://freesound.org/people/fotoshop/sounds/93346/[\\url]
-[url]https://freesound.org/people/Kievinay/sounds/512389/[\\url]"
+[url]https://musescore.com/user/6171746/scores/5278968[/url]
+[url]https://musescore.com/user/105039/scores/1319396[/url]
+[url]https://musescore.com/marcsabatella/bring-a-torch-jeanette-isabella[/url]
+[url]https://musescore.com/choral/deck-the-halls-charles-wood[/url]
+[url]https://musescore.com/user/17603181/scores/5357146[/url]
+[url]https://musescore.com/choral/good-king-wenceslas-geoffrey-shaw[/url]
+[url]https://musescore.com/choral/hark-the-herald-angels-sing-felix-mendelssohn-adapted-by-william-h_-cummings[/url]
+[url]https://musescore.com/hymns/here-we-come-a-wassailing-traditional-yorkshire-tune_[/url]
+[url]https://musescore.com/hymns/i-heard-the-bells-on-christmas-day-john-b_-calkin[/url]
+[url]https://musescore.com/hymns/i-saw-three-ships-come-sailing-in-richard-w_-adams[/url]
+[url]https://musescore.com/choral/scores/5782804[/url]
+[url]https://musescore.com/user/16083/scores/27630[/url]
+[url]https://musescore.com/julianchambers/jolly-old-st_-nicholas[/url]
+[url]https://musescore.com/user/131436/scores/144013[/url]
+[url]https://musescore.com/christmas/o-christmas-tree-version-14-o-tannenbaum-german-folk-song[/url]
+[url]https://musescore.com/user/11215246/scores/6503544[/url]
+[url]https://musescore.com/hymns/o-come-o-come-emmanuel-veni-emmanuel-15th-century-processional-of-french-franciscan-nuns-the-setting-for-the-funeral-hymn-libera-me_-arranged-by-thomas-helmore-in-the-hymnal-noted[/url]
+[url]https://musescore.com/smckl/scores/2930551[/url]
+[url]https://musescore.com/hymns/o-little-town-of-bethlehem-lewis-h_-redner[/url]
+[url]https://musescore.com/scherzandomusic/scores/5901253[/url]
+[url]https://musescore.com/christmas/up-on-the-housetop[/url]
+[url]https://musescore.com/sfgraf/we-three-kings-of-orient-are-recorder-group[/url]
+[url]https://musescore.com/user/14651741/scores/3135061[/url]
+[url]https://www.youtube.com/watch?v=vhnMXSAcopU[/url]
+[url]https://archive.org/details/christmas_carols_2006_librivox/09_thefirstnoel_cg.mp3[/url]
+[url]https://upload.wikimedia.org/wikipedia/commons/2/20/Greensleeves.ogg[/url]
+[url]https://musopen.org/music/2204-the-nutcracker-suite-op-71a/[/url]
+[url]https://musopen.org/music/31009-silent-night/[/url]
+[url]https://freesound.org/people/beskhu/sounds/273911/[/url]
+[url]https://freesound.org/people/speedygonzo/sounds/235712/[/url]
+[url]https://freesound.org/people/aunrea/sounds/495660/[/url]
+[url]https://freesound.org/people/kyles/sounds/453793/[/url]
+[url]https://freesound.org/people/Eipeiknip/sounds/344433/[/url]
+[url]https://freesound.org/people/Nox_Sound/sounds/486081/[/url]
+[url]https://freesound.org/people/Pipelenisf/sounds/560346/[/url]
+[url]https://freesound.org/people/matt_ratz/sounds/541601/[/url]
+[url]https://freesound.org/people/Bonniefan2004/sounds/571386/[/url]
+[url]https://freesound.org/people/JoelAudio/sounds/85568/[/url]
+[url]https://freesound.org/people/MoiraM/sounds/491210/[/url]
+[url]https://freesound.org/people/mariateresa_garcia/sounds/219719/[/url]
+[url]https://freesound.org/people/qubodup/sounds/222517/[/url]
+[url]https://freesound.org/people/ldk1609/sounds/56077/[/url]
+[url]https://freesound.org/people/malisz99/sounds/411129/[/url]
+[url]https://freesound.org/people/Magmi.Soundtracks/sounds/475737/[/url]
+[url]https://freesound.org/people/fotoshop/sounds/93346/[/url]
+[url]https://freesound.org/people/Kievinay/sounds/512389/[/url]
+[url]https://freesound.org/people/philRacoIndie/sounds/512483/[/url]"
 text = "Credits
 
 Dallin Hoyt @Dynamism: Programming
 Isaiah Stotesbery @sirstotes: Modeling, UI Design, Level Design
-Ethan Kendrick @ephun: Sound Design
-Johnny R: Theme Song
+Ethan Kendrick @ephun: Sound Design, Addition UI Design
+Johnny Richardson: Theme Song
 
 Addition Models Used:
-https://opengameart.org/content/furniture-low-poly[\\url]
-https://rallba.itch.io/rallbas-low-poly-bathroom-pack-1[\\url]
+https://opengameart.org/content/furniture-low-poly
+https://rallba.itch.io/rallbas-low-poly-bathroom-pack-1
 
 Fonts:
-https://www.1001fonts.com/ghitna-font.html[\\url]
 https://www.fontspace.com/dynastium-font-f32031
 
 All music/sounds created or edited from these public domain sources:
-https://musescore.com/user/6171746/scores/5278968[\\url]
-https://musescore.com/user/105039/scores/1319396[\\url]
-https://musescore.com/marcsabatella/bring-a-torch-jeanette-isabella[\\url]
-https://musescore.com/choral/deck-the-halls-charles-wood[\\url]
-https://musescore.com/user/17603181/scores/5357146[\\url]
-https://musescore.com/choral/good-king-wenceslas-geoffrey-shaw[\\url]
-https://musescore.com/choral/hark-the-herald-angels-sing-felix-mendelssohn-adapted-by-william-h_-cummings[\\url]
-https://musescore.com/hymns/here-we-come-a-wassailing-traditional-yorkshire-tune_[\\url]
-https://musescore.com/hymns/i-heard-the-bells-on-christmas-day-john-b_-calkin[\\url]
-https://musescore.com/hymns/i-saw-three-ships-come-sailing-in-richard-w_-adams[\\url]
-https://musescore.com/choral/scores/5782804[\\url]
-https://musescore.com/user/16083/scores/27630[\\url]
-https://musescore.com/julianchambers/jolly-old-st_-nicholas[\\url]
-https://musescore.com/user/131436/scores/144013[\\url]
-https://musescore.com/christmas/o-christmas-tree-version-14-o-tannenbaum-german-folk-song[\\url]
-https://musescore.com/user/11215246/scores/6503544[\\url]
-https://musescore.com/hymns/o-come-o-come-emmanuel-veni-emmanuel-15th-century-processional-of-french-franciscan-nuns-the-setting-for-the-funeral-hymn-libera-me_-arranged-by-thomas-helmore-in-the-hymnal-noted[\\url]
-https://musescore.com/smckl/scores/2930551[\\url]
-https://musescore.com/hymns/o-little-town-of-bethlehem-lewis-h_-redner[\\url]
-https://musescore.com/scherzandomusic/scores/5901253[\\url]
-https://musescore.com/christmas/up-on-the-housetop[\\url]
-https://musescore.com/sfgraf/we-three-kings-of-orient-are-recorder-group[\\url]
-https://musescore.com/user/14651741/scores/3135061[\\url]
-https://www.youtube.com/watch?v=vhnMXSAcopU[\\url]
-https://archive.org/details/christmas_carols_2006_librivox/09_thefirstnoel_cg.mp3[\\url]
-https://upload.wikimedia.org/wikipedia/commons/2/20/Greensleeves.ogg[\\url]
-https://musopen.org/music/2204-the-nutcracker-suite-op-71a/[\\url]
-https://musopen.org/music/31009-silent-night/[\\url]
-https://freesound.org/people/beskhu/sounds/273911/[\\url]
-https://freesound.org/people/speedygonzo/sounds/235712/[\\url]
-https://freesound.org/people/aunrea/sounds/495660/[\\url]
-https://freesound.org/people/kyles/sounds/453793/[\\url]
-https://freesound.org/people/Eipeiknip/sounds/344433/[\\url]
-https://freesound.org/people/Nox_Sound/sounds/486081/[\\url]
-https://freesound.org/people/Pipelenisf/sounds/560346/[\\url]
-https://freesound.org/people/matt_ratz/sounds/541601/[\\url]
-https://freesound.org/people/Bonniefan2004/sounds/571386/[\\url]
-https://freesound.org/people/JoelAudio/sounds/85568/[\\url]
-https://freesound.org/people/MoiraM/sounds/491210/[\\url]
-https://freesound.org/people/mariateresa_garcia/sounds/219719/[\\url]
-https://freesound.org/people/qubodup/sounds/222517/[\\url]
-https://freesound.org/people/ldk1609/sounds/56077/[\\url]
-https://freesound.org/people/malisz99/sounds/411129/[\\url]
-https://freesound.org/people/Magmi.Soundtracks/sounds/475737/[\\url]
-https://freesound.org/people/fotoshop/sounds/93346/[\\url]
-https://freesound.org/people/Kievinay/sounds/512389/[\\url]"
+https://musescore.com/user/6171746/scores/5278968
+https://musescore.com/user/105039/scores/1319396
+https://musescore.com/marcsabatella/bring-a-torch-jeanette-isabella
+https://musescore.com/choral/deck-the-halls-charles-wood
+https://musescore.com/user/17603181/scores/5357146
+https://musescore.com/choral/good-king-wenceslas-geoffrey-shaw
+https://musescore.com/choral/hark-the-herald-angels-sing-felix-mendelssohn-adapted-by-william-h_-cummings
+https://musescore.com/hymns/here-we-come-a-wassailing-traditional-yorkshire-tune_
+https://musescore.com/hymns/i-heard-the-bells-on-christmas-day-john-b_-calkin
+https://musescore.com/hymns/i-saw-three-ships-come-sailing-in-richard-w_-adams
+https://musescore.com/choral/scores/5782804
+https://musescore.com/user/16083/scores/27630
+https://musescore.com/julianchambers/jolly-old-st_-nicholas
+https://musescore.com/user/131436/scores/144013
+https://musescore.com/christmas/o-christmas-tree-version-14-o-tannenbaum-german-folk-song
+https://musescore.com/user/11215246/scores/6503544
+https://musescore.com/hymns/o-come-o-come-emmanuel-veni-emmanuel-15th-century-processional-of-french-franciscan-nuns-the-setting-for-the-funeral-hymn-libera-me_-arranged-by-thomas-helmore-in-the-hymnal-noted
+https://musescore.com/smckl/scores/2930551
+https://musescore.com/hymns/o-little-town-of-bethlehem-lewis-h_-redner
+https://musescore.com/scherzandomusic/scores/5901253
+https://musescore.com/christmas/up-on-the-housetop
+https://musescore.com/sfgraf/we-three-kings-of-orient-are-recorder-group
+https://musescore.com/user/14651741/scores/3135061
+https://www.youtube.com/watch?v=vhnMXSAcopU
+https://archive.org/details/christmas_carols_2006_librivox/09_thefirstnoel_cg.mp3
+https://upload.wikimedia.org/wikipedia/commons/2/20/Greensleeves.ogg
+https://musopen.org/music/2204-the-nutcracker-suite-op-71a/
+https://musopen.org/music/31009-silent-night/
+https://freesound.org/people/beskhu/sounds/273911/
+https://freesound.org/people/speedygonzo/sounds/235712/
+https://freesound.org/people/aunrea/sounds/495660/
+https://freesound.org/people/kyles/sounds/453793/
+https://freesound.org/people/Eipeiknip/sounds/344433/
+https://freesound.org/people/Nox_Sound/sounds/486081/
+https://freesound.org/people/Pipelenisf/sounds/560346/
+https://freesound.org/people/matt_ratz/sounds/541601/
+https://freesound.org/people/Bonniefan2004/sounds/571386/
+https://freesound.org/people/JoelAudio/sounds/85568/
+https://freesound.org/people/MoiraM/sounds/491210/
+https://freesound.org/people/mariateresa_garcia/sounds/219719/
+https://freesound.org/people/qubodup/sounds/222517/
+https://freesound.org/people/ldk1609/sounds/56077/
+https://freesound.org/people/malisz99/sounds/411129/
+https://freesound.org/people/Magmi.Soundtracks/sounds/475737/
+https://freesound.org/people/fotoshop/sounds/93346/
+https://freesound.org/people/Kievinay/sounds/512389/
+https://freesound.org/people/philRacoIndie/sounds/512483/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -321,4 +324,9 @@ __meta__ = {
 transform = Transform( -0.73942, 0, 0.673245, 0, 1, 0, -0.673245, 0, -0.73942, -6.32565, 0.676197, -5.8171 )
 
 [node name="House" parent="." instance=ExtResource( 2 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
 [connection signal="pressed" from="CanvasLayer/Screen/Button" to="." method="switch_scene" binds= [ "res://Scenes/Santa's House.tscn" ]]
+[connection signal="pressed" from="CanvasLayer/Screen/Button3" to="CanvasLayer/Screen/Credits" method="show"]
