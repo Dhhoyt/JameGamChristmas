@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fxChase02.ogg-46a6e5204269307bb5d4a908513ea83f.oggst
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
