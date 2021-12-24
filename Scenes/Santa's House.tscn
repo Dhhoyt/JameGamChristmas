@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/godot-navigation-lite/bin/detour_navigation.gdns" type="Script" id=2]
@@ -10,6 +10,11 @@
 [ext_resource path="res://Scenes/Sound Effects.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Objects/Interactive.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Objects/Door.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Audio/droneBathroom01.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Audio/droneFire.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Audio/droneFan.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Assets/Audio/droneHum.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Assets/Audio/droneBathroom02.ogg" type="AudioStream" id=15]
 
 [sub_resource type="NativeScript" id=1]
 class_name = "DetourNavigationMesh"
@@ -948,6 +953,36 @@ autostart = true
 [node name="ChaseTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="Drone Sound Effects" type="Spatial" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.51059, 0, -2.67276 )
+stream = ExtResource( 11 )
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.54033, 0, -2.67276 )
+stream = ExtResource( 11 )
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24618, 2.86349, -2.67276 )
+stream = ExtResource( 11 )
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.07334, 2.86349, -10.226 )
+stream = ExtResource( 15 )
+
+[node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.17681, 0.533019, -9.67873 )
+stream = ExtResource( 13 )
+
+[node name="AudioStreamPlayer3D6" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25243, 0.533019, -4.3609 )
+stream = ExtResource( 12 )
+
+[node name="AudioStreamPlayer3D7" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.228708, 3.76976, -10.6508 )
+stream = ExtResource( 14 )
 [connection signal="doll_placed" from="Player" to="." method="on_doll_placed"]
 [connection signal="timeout" from="noisetimer" to="." method="_on_noisetimer_timeout"]
 [connection signal="tween_all_completed" from="SoundTween" to="." method="_on_SoundTween_tween_all_completed"]
