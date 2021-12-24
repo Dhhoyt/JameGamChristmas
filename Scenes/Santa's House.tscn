@@ -983,6 +983,7 @@ stream = ExtResource( 12 )
 [node name="AudioStreamPlayer3D7" type="AudioStreamPlayer3D" parent="Drone Sound Effects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.228708, 3.76976, -10.6508 )
 stream = ExtResource( 14 )
+
 [connection signal="doll_placed" from="Player" to="." method="on_doll_placed"]
 [connection signal="timeout" from="noisetimer" to="." method="_on_noisetimer_timeout"]
 [connection signal="tween_all_completed" from="SoundTween" to="." method="_on_SoundTween_tween_all_completed"]

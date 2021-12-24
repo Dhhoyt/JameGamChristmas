@@ -20,12 +20,12 @@ font_data = SubResource( 2 )
 [sub_resource type="Theme" id=4]
 default_font = SubResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 1, 1, 1, 0.0941176 )
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=6]
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.478431, 0.478431, 0.478431, 1 )
 
 [node name="TitleScreen" type="Spatial"]
@@ -75,10 +75,10 @@ margin_right = 95.0
 margin_bottom = 51.5
 grow_horizontal = 2
 grow_vertical = 2
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/normal = SubResource( 8 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 1 )
 text = "Play"
 __meta__ = {
@@ -96,8 +96,8 @@ margin_right = 95.0
 margin_bottom = 101.5
 grow_horizontal = 2
 grow_vertical = 2
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 6 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 7 )
 custom_fonts/font = ExtResource( 1 )
 disabled = true
 text = "Settings"
@@ -116,10 +116,10 @@ margin_right = 95.0
 margin_bottom = 151.5
 grow_horizontal = 2
 grow_vertical = 2
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/normal = SubResource( 8 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 1 )
 text = "Credits"
 __meta__ = {
@@ -137,10 +137,10 @@ margin_right = 95.0
 margin_bottom = 201.5
 grow_horizontal = 2
 grow_vertical = 2
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/normal = SubResource( 8 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 1 )
 text = "How To Play"
 __meta__ = {
@@ -310,10 +310,10 @@ margin_right = 52.0
 margin_bottom = 51.5
 grow_horizontal = 2
 grow_vertical = 2
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/normal = SubResource( 8 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 1 )
 text = "X"
 __meta__ = {
@@ -408,16 +408,69 @@ All music/sounds created or edited from these public domain sources:
 [url]https://freesound.org/people/fotoshop/sounds/93346/[/url]
 [url]https://freesound.org/people/Kievinay/sounds/512389/[/url]
 [url]https://freesound.org/people/philRacoIndie/sounds/512483/[/url]"
-text = "How To Play:
+text = "
+[center]Credits[/center]
 
-In this Christmas stealth horror game, play as Santa Claus himself as you fend your North Pole home from Krampus. Will you be able to evade his grasp, get your hat back, and save Christmas?
+Dallin Hoyt @Dynamism: Programming, Additional Animation
+Isaiah Stotesbery @sirstotes: Modeling, UI Design, Level Design, Additional Programming
+Ethan Kendrick @ephun: Sound Design, Additional UI Design
+Johnny Richardson: Theme Song
 
-WASD To Move
-Click to Interact
-H to Hide
-Esc to Exit Inventory
+Addition Models Used:
+[url]https://opengameart.org/content/furniture-low-poly[/url]
+[url]https://rallba.itch.io/rallbas-low-poly-bathroom-pack-1[/url]
 
-Collect all 7 doll pieces and place them on the workbench to build the doll. Place the doll underneath the Chandelier and cut the rope to kill Krampus"
+Fonts:
+[url]https://www.fontspace.com/dynastium-font-f32031[/url]
+
+All music/sounds created or edited from these public domain sources:
+[url]https://musescore.com/user/6171746/scores/5278968[/url]
+[url]https://musescore.com/user/105039/scores/1319396[/url]
+[url]https://musescore.com/marcsabatella/bring-a-torch-jeanette-isabella[/url]
+[url]https://musescore.com/choral/deck-the-halls-charles-wood[/url]
+[url]https://musescore.com/user/17603181/scores/5357146[/url]
+[url]https://musescore.com/choral/good-king-wenceslas-geoffrey-shaw[/url]
+[url]https://musescore.com/choral/hark-the-herald-angels-sing-felix-mendelssohn-adapted-by-william-h_-cummings[/url]
+[url]https://musescore.com/hymns/here-we-come-a-wassailing-traditional-yorkshire-tune_[/url]
+[url]https://musescore.com/hymns/i-heard-the-bells-on-christmas-day-john-b_-calkin[/url]
+[url]https://musescore.com/hymns/i-saw-three-ships-come-sailing-in-richard-w_-adams[/url]
+[url]https://musescore.com/choral/scores/5782804[/url]
+[url]https://musescore.com/user/16083/scores/27630[/url]
+[url]https://musescore.com/julianchambers/jolly-old-st_-nicholas[/url]
+[url]https://musescore.com/user/131436/scores/144013[/url]
+[url]https://musescore.com/christmas/o-christmas-tree-version-14-o-tannenbaum-german-folk-song[/url]
+[url]https://musescore.com/user/11215246/scores/6503544[/url]
+[url]https://musescore.com/hymns/o-come-o-come-emmanuel-veni-emmanuel-15th-century-processional-of-french-franciscan-nuns-the-setting-for-the-funeral-hymn-libera-me_-arranged-by-thomas-helmore-in-the-hymnal-noted[/url]
+[url]https://musescore.com/smckl/scores/2930551[/url]
+[url]https://musescore.com/hymns/o-little-town-of-bethlehem-lewis-h_-redner[/url]
+[url]https://musescore.com/scherzandomusic/scores/5901253[/url]
+[url]https://musescore.com/christmas/up-on-the-housetop[/url]
+[url]https://musescore.com/sfgraf/we-three-kings-of-orient-are-recorder-group[/url]
+[url]https://musescore.com/user/14651741/scores/3135061[/url]
+[url]https://www.youtube.com/watch?v=vhnMXSAcopU[/url]
+[url]https://archive.org/details/christmas_carols_2006_librivox/09_thefirstnoel_cg.mp3[/url]
+[url]https://upload.wikimedia.org/wikipedia/commons/2/20/Greensleeves.ogg[/url]
+[url]https://musopen.org/music/2204-the-nutcracker-suite-op-71a/[/url]
+[url]https://musopen.org/music/31009-silent-night/[/url]
+[url]https://freesound.org/people/beskhu/sounds/273911/[/url]
+[url]https://freesound.org/people/speedygonzo/sounds/235712/[/url]
+[url]https://freesound.org/people/aunrea/sounds/495660/[/url]
+[url]https://freesound.org/people/kyles/sounds/453793/[/url]
+[url]https://freesound.org/people/Eipeiknip/sounds/344433/[/url]
+[url]https://freesound.org/people/Nox_Sound/sounds/486081/[/url]
+[url]https://freesound.org/people/Pipelenisf/sounds/560346/[/url]
+[url]https://freesound.org/people/matt_ratz/sounds/541601/[/url]
+[url]https://freesound.org/people/Bonniefan2004/sounds/571386/[/url]
+[url]https://freesound.org/people/JoelAudio/sounds/85568/[/url]
+[url]https://freesound.org/people/MoiraM/sounds/491210/[/url]
+[url]https://freesound.org/people/mariateresa_garcia/sounds/219719/[/url]
+[url]https://freesound.org/people/qubodup/sounds/222517/[/url]
+[url]https://freesound.org/people/ldk1609/sounds/56077/[/url]
+[url]https://freesound.org/people/malisz99/sounds/411129/[/url]
+[url]https://freesound.org/people/Magmi.Soundtracks/sounds/475737/[/url]
+[url]https://freesound.org/people/fotoshop/sounds/93346/[/url]
+[url]https://freesound.org/people/Kievinay/sounds/512389/[/url]
+[url]https://freesound.org/people/philRacoIndie/sounds/512483/[/url]"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -429,10 +482,10 @@ margin_right = 52.0
 margin_bottom = 51.5
 grow_horizontal = 2
 grow_vertical = 2
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/normal = SubResource( 8 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 1 )
 text = "X"
 __meta__ = {
@@ -448,6 +501,7 @@ current = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 autoplay = true
+
 [connection signal="pressed" from="CanvasLayer/Screen/Button" to="." method="switch_scene" binds= [ "res://Scenes/Santa's House.tscn" ]]
 [connection signal="pressed" from="CanvasLayer/Screen/Button3" to="CanvasLayer/Screen/Credits" method="show"]
 [connection signal="pressed" from="CanvasLayer/Screen/Button4" to="CanvasLayer/Screen/HowTo" method="show"]
