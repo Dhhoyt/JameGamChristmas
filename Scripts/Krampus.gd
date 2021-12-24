@@ -38,6 +38,13 @@ func _process(delta):
 		$krampus/AnimationPlayer.play("Stand")
 		$krampus.look_at(path[path_node], Vector3.UP)
 		$krampus.rotation_degrees = Vector3(0, $krampus.rotation_degrees.y-90, 0)
+	for i in doors.get_children():
+		print((global_transform.origin - i.global_transform.origin).length())
+		if (global_transform.origin - i.global_transform.origin).length() < .75:
+			var facing = (path[path_node] - global_transform.origin)
+			var diff = i.global_transform.origin - global_transform.origin
+			if facing.normalized().dot(diff.normalized()) > fov:
+				i.move()
 
 func _physics_process(delta):
 	if path_node < path.size():
