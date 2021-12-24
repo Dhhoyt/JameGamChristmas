@@ -49,7 +49,6 @@ var current_hide = null
 func _ready():
 	$CanvasLayer/ItemBar.add_item(Item.new("Flashlight", "res://Assets/UI/Icons/flashlight.png"))
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta):
 	onscreen_text()
@@ -156,6 +155,11 @@ func _input(event):
 		new_looking.x -= deg2rad(event.relative.y * sensitivity)
 		new_looking.x = clamp(new_looking.x, -PI/3, PI/3)
 		set_looking(new_looking)
+	if event is InputEvent:
+		if event.is_action_pressed("escape"):
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if event.is_action_pressed("player_interact"):
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func set_height(new_height):
 	if last_height > new_height:
