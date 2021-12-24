@@ -28,9 +28,9 @@ func update_selected():
 			get_child(i).get_child(0).hide()
 func update_images():
 	for i in range(get_child_count()):
-		get_child(i).texture = CIRCLE
+		get_child(i).texture_normal = CIRCLE
 	for i in range(len(items)):
-		get_child(i).texture = items[i].texture
+		get_child(i).texture_normal = items[i].texture
 func add_item(item):
 	if can_add_item():
 		items.append(item)

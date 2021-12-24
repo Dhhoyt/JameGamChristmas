@@ -139,6 +139,7 @@ __meta__ = {
 }
 
 [node name="InventoryArea" type="Panel" parent="CanvasLayer"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -154,6 +155,9 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+itemBarPath = NodePath("../ItemBar")
+playerPath = NodePath("../..")
+gridContainerPath = NodePath("GridContainer")
 
 [node name="Label" type="Label" parent="CanvasLayer/InventoryArea"]
 anchor_left = 0.5
@@ -183,220 +187,105 @@ __meta__ = {
 }
 
 [node name="Item" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
-visible = false
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 texture_normal = ExtResource( 6 )
 expand = true
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/InventoryArea/GridContainer/Item"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Item2" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
-visible = false
-margin_right = 80.0
+margin_left = 84.0
+margin_right = 164.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 texture_normal = ExtResource( 6 )
 expand = true
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/InventoryArea/GridContainer/Item2"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Item3" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
-visible = false
-margin_right = 80.0
+margin_left = 168.0
+margin_right = 248.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 texture_normal = ExtResource( 6 )
 expand = true
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/InventoryArea/GridContainer/Item3"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Item4" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
-visible = false
-margin_right = 80.0
+margin_left = 252.0
+margin_right = 332.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 texture_normal = ExtResource( 6 )
 expand = true
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/InventoryArea/GridContainer/Item4"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Item5" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
-visible = false
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture_normal = ExtResource( 6 )
-expand = true
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/InventoryArea/GridContainer/Item5"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Item6" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
-visible = false
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture_normal = ExtResource( 6 )
-expand = true
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/InventoryArea/GridContainer/Item6"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Item7" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
-visible = false
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture_normal = ExtResource( 6 )
-expand = true
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/InventoryArea/GridContainer/Item7"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Item8" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
-visible = false
+margin_top = 84.0
 margin_right = 80.0
-margin_bottom = 80.0
+margin_bottom = 164.0
 rect_min_size = Vector2( 80, 80 )
 texture_normal = ExtResource( 6 )
 expand = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/InventoryArea/GridContainer/Item8"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Item9" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
-visible = false
-margin_right = 80.0
-margin_bottom = 80.0
+[node name="Item7" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
+margin_left = 84.0
+margin_top = 84.0
+margin_right = 164.0
+margin_bottom = 164.0
 rect_min_size = Vector2( 80, 80 )
 texture_normal = ExtResource( 6 )
 expand = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/InventoryArea/GridContainer/Item9"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Item10" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
-visible = false
-margin_right = 80.0
-margin_bottom = 80.0
+[node name="Item6" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
+margin_left = 168.0
+margin_top = 84.0
+margin_right = 248.0
+margin_bottom = 164.0
 rect_min_size = Vector2( 80, 80 )
 texture_normal = ExtResource( 6 )
 expand = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/InventoryArea/GridContainer/Item10"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Item11" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
-visible = false
-margin_right = 80.0
-margin_bottom = 80.0
+[node name="Item5" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
+margin_left = 252.0
+margin_top = 84.0
+margin_right = 332.0
+margin_bottom = 164.0
 rect_min_size = Vector2( 80, 80 )
 texture_normal = ExtResource( 6 )
 expand = true
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/InventoryArea/GridContainer/Item11"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Item12" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
-visible = false
+margin_top = 168.0
 margin_right = 80.0
-margin_bottom = 80.0
+margin_bottom = 248.0
 rect_min_size = Vector2( 80, 80 )
 texture_normal = ExtResource( 6 )
 expand = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/InventoryArea/GridContainer/Item12"]
-margin_right = 80.0
-margin_bottom = 80.0
+[node name="Item11" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
+margin_left = 84.0
+margin_top = 168.0
+margin_right = 164.0
+margin_bottom = 248.0
 rect_min_size = Vector2( 80, 80 )
-texture = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Item10" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
+margin_left = 168.0
+margin_top = 168.0
+margin_right = 248.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 6 )
+expand = true
+
+[node name="Item9" type="TextureButton" parent="CanvasLayer/InventoryArea/GridContainer"]
+margin_left = 252.0
+margin_top = 168.0
+margin_right = 332.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 6 )
+expand = true
 
 [node name="Hide" type="Tween" parent="."]
 
