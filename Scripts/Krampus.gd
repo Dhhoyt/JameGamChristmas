@@ -3,10 +3,9 @@ extends KinematicBody
 var path = []
 var path_node = 0
 
-var speed = 1
-var chase_speed = 3
+var speed = 5
 var hearing_dist = 5
-var fov = cos(PI/2)
+var fov = cos(PI/4)
 
 var investigated = false
 var state = 2 #0 = chase 1 = investigating 2 = wander
@@ -14,7 +13,6 @@ var state = 2 #0 = chase 1 = investigating 2 = wander
 onready var nav = $"../DetourNavigation"
 onready var player = $"../Player"
 onready var spots = $"../RandomSpots"
-onready var doors = $"../DetourNavigation/Doors"
 
 var current_priority = 0
 var noise_pos = Vector3()
@@ -24,18 +22,6 @@ func _ready():
 	new_spot()
 
 func _process(delta):
-	if state == 0:
-		$Model/AnimationPlayer.play("Chase")
-		$Model.look_at(player.global_transform.origin, Vector3.UP)
-		$Model.rotation_degrees = Vector3(0, $Model.rotation_degrees.y - 90, 0)
-	elif state == 1:
-		$Model/AnimationPlayer.play("Wander")
-		$Model.look_at(path[path_node], Vector3.UP)
-		$Model.rotation_degrees = Vector3(0, $Model.rotation_degrees.y - 90, 0)
-	elif state == 2:
-		$Model/AnimationPlayer.play("Wander")
-		$Model.look_at(path[path_node], Vector3.UP)
-		$Model.rotation_degrees = Vector3(0, $Model.rotation_degrees.y - 90, 0)
 	if within_view():
 		state = 0
 		new_spot()
@@ -50,7 +36,7 @@ func _process(delta):
 func _physics_process(delta):
 	if path_node < path.size():
 		var direction = (path[path_node] - global_transform.origin)
-		if direction.length() < speed * delta * 1.2:
+		if direction.length() < 1:
 			path_node += 1
 			if path_node >= path.size():
 				path_node = 0
@@ -67,11 +53,11 @@ func _physics_process(delta):
 
 func move_to(target_pos):
 	path = nav.get_node("DetourNavigationMesh").find_path(global_transform.origin, target_pos)["points"]
-	#print(randi())
+	print(randi())
 	path_node = 0
 	
 func within_view():
-	if player.hiding or path.size() <= path_node:
+	if player.hiding:
 		return false
 	var facing = (path[path_node] - global_transform.origin)
 	var diff = player.global_transform.origin - global_transform.origin

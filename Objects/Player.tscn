@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/FEETHmn_Man footsteps on the wooden floor (ID 0165)_BSB.wav" type="AudioStream" id=2]
@@ -11,6 +11,9 @@
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
 height = 1.3
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.223529, 0.2, 0.188235, 1 )
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -49,7 +52,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemBar" type="HBoxContainer" parent="CanvasLayer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -63,14 +66,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Item" type="TextureRect" parent="CanvasLayer/ItemBar"]
+[node name="Item" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 texture = ExtResource( 6 )
 expand = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ItemBar/Item"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Item"]
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
@@ -80,7 +83,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Item2" type="TextureRect" parent="CanvasLayer/ItemBar"]
+[node name="Item2" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
 margin_left = 84.0
 margin_right = 164.0
 margin_bottom = 80.0
@@ -88,7 +91,7 @@ rect_min_size = Vector2( 80, 80 )
 texture = ExtResource( 6 )
 expand = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ItemBar/Item2"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Item2"]
 visible = false
 margin_right = 80.0
 margin_bottom = 80.0
@@ -99,7 +102,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Item3" type="TextureRect" parent="CanvasLayer/ItemBar"]
+[node name="Item3" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
 margin_left = 168.0
 margin_right = 248.0
 margin_bottom = 80.0
@@ -107,7 +110,7 @@ rect_min_size = Vector2( 80, 80 )
 texture = ExtResource( 6 )
 expand = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ItemBar/Item3"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Item3"]
 visible = false
 margin_right = 80.0
 margin_bottom = 80.0
@@ -118,7 +121,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Item4" type="TextureRect" parent="CanvasLayer/ItemBar"]
+[node name="Item4" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
 margin_left = 252.0
 margin_right = 332.0
 margin_bottom = 80.0
@@ -126,8 +129,273 @@ rect_min_size = Vector2( 80, 80 )
 texture = ExtResource( 6 )
 expand = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ItemBar/Item4"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Item4"]
 visible = false
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -192.0
+margin_top = -220.0
+margin_right = 192.0
+margin_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -62.5
+margin_top = 30.0
+margin_right = 62.5
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 4 )
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -166.0
+margin_top = -94.0
+margin_right = 166.0
+margin_bottom = 154.0
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item" type="TextureRect" parent="CanvasLayer/Panel/GridContainer"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/GridContainer/Item"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item2" type="TextureRect" parent="CanvasLayer/Panel/GridContainer"]
+margin_left = 84.0
+margin_right = 164.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/GridContainer/Item2"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item3" type="TextureRect" parent="CanvasLayer/Panel/GridContainer"]
+margin_left = 168.0
+margin_right = 248.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/GridContainer/Item3"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item4" type="TextureRect" parent="CanvasLayer/Panel/GridContainer"]
+margin_left = 252.0
+margin_right = 332.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/GridContainer/Item4"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item5" type="TextureRect" parent="CanvasLayer/Panel/GridContainer"]
+margin_top = 84.0
+margin_right = 80.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/GridContainer/Item5"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item6" type="TextureRect" parent="CanvasLayer/Panel/GridContainer"]
+margin_left = 84.0
+margin_top = 84.0
+margin_right = 164.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/GridContainer/Item6"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item7" type="TextureRect" parent="CanvasLayer/Panel/GridContainer"]
+margin_left = 168.0
+margin_top = 84.0
+margin_right = 248.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/GridContainer/Item7"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item8" type="TextureRect" parent="CanvasLayer/Panel/GridContainer"]
+margin_left = 252.0
+margin_top = 84.0
+margin_right = 332.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/GridContainer/Item8"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item9" type="TextureRect" parent="CanvasLayer/Panel/GridContainer"]
+margin_top = 168.0
+margin_right = 80.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/GridContainer/Item9"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item10" type="TextureRect" parent="CanvasLayer/Panel/GridContainer"]
+margin_left = 84.0
+margin_top = 168.0
+margin_right = 164.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/GridContainer/Item10"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item11" type="TextureRect" parent="CanvasLayer/Panel/GridContainer"]
+margin_left = 168.0
+margin_top = 168.0
+margin_right = 248.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/GridContainer/Item11"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item12" type="TextureRect" parent="CanvasLayer/Panel/GridContainer"]
+margin_left = 252.0
+margin_top = 168.0
+margin_right = 332.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/GridContainer/Item12"]
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
