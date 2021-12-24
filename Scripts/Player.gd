@@ -40,6 +40,7 @@ var crouching : bool = false
 var hiding : bool = false
 var getting_in : bool = false
 var in_inventory : bool = false
+var inventory_type : int = 0
 
 var gravity_vector : Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 var gravity_magnitude : int = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -193,6 +194,7 @@ func onscreen_text():
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 				$CanvasLayer/InventoryArea.display_inventory(result["collider"].get_parent())
 				in_inventory = true
+				inventory_type = 1
 		elif result["collider"].is_in_group("Hideable") and result["collider"].is_in_group("Moveable"):
 			$"CanvasLayer/Label".text = "Press H to hide\n Click to move"
 			if Input.is_action_just_pressed("player_hide"):
@@ -219,6 +221,9 @@ func onscreen_text():
 					get_parent().remove_noisy(result["collider"])
 		elif result["collider"].is_in_group("Builder"):
 			$"CanvasLayer/Label".text = "Click to build"
+			if Input.is_action_just_pressed("player_interact"):
+				$CanvasLayer/Building.show()
+				inventory_type = 2
 		else:
 			Input.is_action_just_pressed("player_interact")
 			$"CanvasLayer/Label".text = ""
@@ -231,7 +236,6 @@ func add_enemy(new_enemy):
 	enemies.append(new_enemy)
 
 func do_hide(hiding_space):
-	print("t")
 	if $Hide.is_active():
 		return
 	if not hiding and not getting_in:
@@ -248,6 +252,11 @@ func do_hide(hiding_space):
 
 func _on_Hide_tween_all_completed():
 	if getting_in:
-		print("g")
 		getting_in = false
 		hiding = true
+func item_pressed(index):
+	if in_inventory:
+		if inventory_type == 1:
+			$CanvasLayer/InventoryArea.remove_item_bar(index)
+		elif inventory_type == 2:
+			$CanvasLayer/Building.remove_item_bar(index)
