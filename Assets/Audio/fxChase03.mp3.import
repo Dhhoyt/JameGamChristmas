@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/fxChase03.mp3-5669e1a8ab3259305855605f31a36697.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/fxChase03.mp3"
+dest_files=[ "res://.import/fxChase03.mp3-5669e1a8ab3259305855605f31a36697.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
