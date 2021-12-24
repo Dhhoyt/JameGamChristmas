@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.3, 0.3, 0.6 )
+[sub_resource type="BoxShape" id=61]
+extents = Vector3( 0.0478824, 0.286556, 0.294882 )
 
 [node name="InventoryCollider" type="StaticBody" groups=[
 "Interactable",
@@ -9,4 +9,4 @@ extents = Vector3( 0.3, 0.3, 0.6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.529791, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 61 )

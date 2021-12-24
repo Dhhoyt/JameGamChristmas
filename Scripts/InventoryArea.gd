@@ -20,6 +20,7 @@ func display_inventory(inventoryObject):
 	for child in gridContainer.get_children():
 		child.hide()
 		child.texture_normal = CIRCLE
+	print(gridContainer.get_children().size())
 	for i in range(inventoryObject.capacity):
 		gridContainer.get_child(i).show()
 		if i < len(inventoryObject.items):

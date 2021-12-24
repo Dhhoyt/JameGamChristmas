@@ -168,6 +168,7 @@ func _input(event):
 			in_inventory = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			$CanvasLayer/InventoryArea.hide()
+			$CanvasLayer/Building.hide()
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event.is_action_pressed("player_interact"):
@@ -241,9 +242,10 @@ func onscreen_text():
 					$CanvasLayer/ItemBar.remove_selected_item()
 					doll_placed = true
 		elif result["collider"].is_in_group("Chandelier") and doll_placed:
-			$"CanvasLayer/Label".text = "Click to Cut Down Chandelier"
-			if Input.is_action_just_pressed("player_interact"):
-				emit_signal("chandelier_cut")
+			if $CanvasLayer/ItemBar.get_selected_item_name() == "Knife":
+				$"CanvasLayer/Label".text = "Click to Cut Down Chandelier"
+				if Input.is_action_just_pressed("player_interact"):
+					get_tree().change_scene("res://Scenes/WinScene.tscn")
 				
 		else:
 			Input.is_action_just_pressed("player_interact")

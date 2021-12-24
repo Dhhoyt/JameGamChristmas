@@ -5,4 +5,4 @@
 [node name="Item" type="Node"]
 script = ExtResource( 1 )
 title = "Buttons"
-icon = "res://Assets/UI/Icons/shirt-button.png"
+imgPath = "res://Assets/UI/Icons/shirt-button.png"

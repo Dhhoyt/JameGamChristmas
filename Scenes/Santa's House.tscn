@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/godot-navigation-lite/bin/detour_navigation.gdns" type="Script" id=2]
@@ -778,6 +778,27 @@ surfaces/0 = {
 "vertex_count": 2156
 }
 
+[sub_resource type="BoxShape" id=62]
+extents = Vector3( 0.287111, 0.286556, 0.294882 )
+
+[sub_resource type="BoxShape" id=63]
+extents = Vector3( 0.21543, 0.806876, 0.376067 )
+
+[sub_resource type="BoxShape" id=64]
+extents = Vector3( 0.34569, 0.771313, 0.201558 )
+
+[sub_resource type="BoxShape" id=65]
+extents = Vector3( 0.282131, 0.29979, 0.705953 )
+
+[sub_resource type="BoxShape" id=66]
+extents = Vector3( 0.25812, 0.286556, 0.678596 )
+
+[sub_resource type="BoxShape" id=67]
+extents = Vector3( 0.264134, 0.286556, 0.705182 )
+
+[sub_resource type="BoxShape" id=68]
+extents = Vector3( 0.290802, 0.286556, 0.69666 )
+
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 7 )
 
@@ -879,6 +900,49 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.5083
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.4, 2, -3.94 )
 
 [node name="Interactive" parent="DetourNavigation" instance=ExtResource( 9 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/Bedside Table001/InventoryCollider2" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00930572, 0 )
+shape = SubResource( 62 )
+
+[node name="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/BookCase/InventoryCollider" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.051774, 0.766082, 0 )
+shape = SubResource( 63 )
+
+[node name="BookCaseBooks" parent="DetourNavigation/Interactive/InteractiveObjects" index="3"]
+transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, -4.60002, 1.99815, -5.40191 )
+
+[node name="InventoryCollider" parent="DetourNavigation/Interactive/InteractiveObjects/BookCaseBooks" index="0"]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/BookCaseBooks/InventoryCollider" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.704875, 0 )
+shape = SubResource( 64 )
+
+[node name="InventoryCollider" parent="DetourNavigation/Interactive/InteractiveObjects/Desk" index="0"]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, -0.117235, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/Desk/InventoryCollider" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00607872, 0.404152, -0.00366294 )
+shape = SubResource( 65 )
+
+[node name="Desk001" parent="DetourNavigation/Interactive/InteractiveObjects" index="15"]
+itemPaths = [ "res://Objects/Items/Books.tscn", "res://Objects/Items/Buttons.tscn" ]
+
+[node name="Desk002" parent="DetourNavigation/Interactive/InteractiveObjects" index="16"]
+itemPaths = [ "res://Objects/Items/Broom.tscn" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/Desk002/InventoryCollider2" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.299827, -0.102019 )
+shape = SubResource( 66 )
+
+[node name="CollisionShape" type="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/Desk003/InventoryCollider3" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.290875, -0.124682 )
+shape = SubResource( 67 )
+
+[node name="CollisionShape" type="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/Desk004/InventoryCollider4" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.288244, -0.104591 )
+shape = SubResource( 68 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.62546, 2.60842, -6.7224 )
@@ -985,6 +1049,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.228708, 3.76976, -10.6508 )
 stream = ExtResource( 14 )
 
 [connection signal="doll_placed" from="Player" to="." method="on_doll_placed"]
+[connection signal="doll_built" from="Player/CanvasLayer/Building" to="." method="on_doll_built"]
 [connection signal="timeout" from="noisetimer" to="." method="_on_noisetimer_timeout"]
 [connection signal="tween_all_completed" from="SoundTween" to="." method="_on_SoundTween_tween_all_completed"]
 
@@ -999,3 +1064,4 @@ stream = ExtResource( 14 )
 [editable path="DetourNavigation/Interactive/InteractiveObjects/SinkLv1001/StaticBody2"]
 [editable path="DetourNavigation/Interactive/InteractiveObjects/SinkLv1002/StaticBody3"]
 [editable path="DetourNavigation/Interactive/InteractiveObjects/SinkLv1003/StaticBody4"]
+[editable path="Player"]
