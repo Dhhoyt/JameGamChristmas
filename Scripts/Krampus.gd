@@ -14,6 +14,7 @@ var state = 2 #0 = chase 1 = investigating 2 = wander
 onready var nav = $"../DetourNavigation"
 onready var player = $"../Player"
 onready var spots = $"../RandomSpots"
+onready var doors = $"../DetourNavigation/Doors"
 
 var current_priority = 0
 var noise_pos = Vector3()

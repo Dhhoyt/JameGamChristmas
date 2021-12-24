@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/MoveableCollider.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.446125, 0.912699, 0.0125157 )
+
+[node name="Door" type="StaticBody" groups=["Moveable"]]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.402344, 0.948093, -0.0192645 )
+shape = SubResource( 2 )

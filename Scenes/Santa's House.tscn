@@ -793,6 +793,8 @@ debug_mesh = SubResource( 105 )
 
 [node name="Interactive" parent="DetourNavigation" instance=ExtResource( 8 )]
 
+[node name="Doors" type="Spatial" parent="DetourNavigation"]
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.79378, -2.28481 )
 
