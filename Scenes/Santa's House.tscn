@@ -805,4 +805,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0908537, 2.63366, -1.29728 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Sound Effects" parent="." instance=ExtResource( 8 )]
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
