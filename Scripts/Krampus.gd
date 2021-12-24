@@ -39,7 +39,13 @@ func _process(delta):
 	if within_view():
 		state = 0
 		new_spot()
-	print(state)
+	for i in doors.get_children():
+		print((global_transform.origin - i.global_transform.origin).length())
+		if (global_transform.origin - i.global_transform.origin).length() < .75:
+			var facing = (path[path_node] - global_transform.origin)
+			var diff = i.global_transform.origin - global_transform.origin
+			if facing.normalized().dot(diff.normalized()) > fov:
+				i.move()
 
 func _physics_process(delta):
 	if path_node < path.size():
@@ -73,7 +79,6 @@ func within_view():
 		return false
 	var space_state = get_world().direct_space_state
 	var result = space_state.intersect_ray(global_transform.origin, player.global_transform.origin, [self,player], 2)
-	print(result.empty())
 	return result.empty()
 
 func random_spot():
