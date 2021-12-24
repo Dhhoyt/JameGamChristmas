@@ -55,7 +55,7 @@ var current_hide = null
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/FinishedDoll.tscn").instance())
+	#$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/FinishedDoll.tscn").instance())
 
 func _physics_process(delta):
 	onscreen_text()
@@ -234,9 +234,7 @@ func onscreen_text():
 				in_inventory = true
 				inventory_type = 2
 		elif result["collider"].is_in_group("PlacementArea"):
-			print("BUH")
 			if $CanvasLayer/ItemBar.get_selected_item_name() == "Finished Doll":
-				print("BRUH")
 				$"CanvasLayer/Label".text = "Click to Place Doll"
 				if Input.is_action_just_pressed("player_interact"):
 					emit_signal("doll_placed")

@@ -43,6 +43,7 @@ func take_item(index):
 		return item
 func remove_selected_item():
 	items.remove(selectedNum)
+	update_images()
 func get_selected_item_name():
 	if len(items) > selectedNum:
 		return items[selectedNum].title
