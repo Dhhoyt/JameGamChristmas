@@ -38,6 +38,7 @@ var velocity : Vector3 = Vector3()
 
 var crouching : bool = false
 var hiding : bool = false
+var in_inventory : bool = false
 
 var gravity_vector : Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 var gravity_magnitude : int = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -52,44 +53,45 @@ func _ready():
 
 func _physics_process(delta):
 	onscreen_text()
-	if not $Crouch.is_active():
-		if Input.is_action_pressed("player_crouch") and not crouching:
-			crouching = true
-			$Crouch.interpolate_method(self, "set_height", standing_height, standing_height * crouch_coeff, crouch_time, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
-			$Crouch.start()
-		elif not Input.is_action_pressed("player_crouch") and crouching and not uncrouch_blocked():
-			crouching = false
-			$Crouch.interpolate_method(self, "set_height", standing_height * crouch_coeff, standing_height, crouch_time, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
-			$Crouch.start()
-	
-	if hiding and not $Hide.is_active():
-		global_transform.origin = current_hide.get_node("HidingPoint").global_transform.origin
-		return
-	
-	var multiplier : float = 1
-	if !is_on_floor():
-		multiplier = air_coeff
-	var move_accel : float
-	var max_speed : float
-	
-	if crouching:
-		move_accel = crouch_accel
-		max_speed = max_crouch_speed
-	elif Input.is_action_pressed("player_run"):
-		move_accel = run_accel
-		max_speed = max_run_speed
-	else:
-		move_accel = walk_accel
-		max_speed = max_walk_speed
-	apply_friction(delta, multiplier)
-	var walkvector : Vector2 = walk(delta, move_accel, max_speed, multiplier)
-	
-	if is_on_floor() and Input.is_action_pressed("player_jump"):
-		velocity.y = jump_speed
-	
-	velocity = Vector3(walkvector.x, velocity.y, -walkvector.y)
-	velocity = move_and_slide(velocity, Vector3(0, 1, 0), false, 4, 0.785398, false)
-	velocity += (gravity_magnitude * delta) * gravity_vector
+	if not in_inventory:
+		if not $Crouch.is_active():
+			if Input.is_action_pressed("player_crouch") and not crouching:
+				crouching = true
+				$Crouch.interpolate_method(self, "set_height", standing_height, standing_height * crouch_coeff, crouch_time, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+				$Crouch.start()
+			elif not Input.is_action_pressed("player_crouch") and crouching and not uncrouch_blocked():
+				crouching = false
+				$Crouch.interpolate_method(self, "set_height", standing_height * crouch_coeff, standing_height, crouch_time, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+				$Crouch.start()
+		
+		if hiding and not $Hide.is_active():
+			global_transform.origin = current_hide.get_node("HidingPoint").global_transform.origin
+			return
+		
+		var multiplier : float = 1
+		if !is_on_floor():
+			multiplier = air_coeff
+		var move_accel : float
+		var max_speed : float
+		
+		if crouching:
+			move_accel = crouch_accel
+			max_speed = max_crouch_speed
+		elif Input.is_action_pressed("player_run"):
+			move_accel = run_accel
+			max_speed = max_run_speed
+		else:
+			move_accel = walk_accel
+			max_speed = max_walk_speed
+		apply_friction(delta, multiplier)
+		var walkvector : Vector2 = walk(delta, move_accel, max_speed, multiplier)
+		
+		if is_on_floor() and Input.is_action_pressed("player_jump"):
+			velocity.y = jump_speed
+		
+		velocity = Vector3(walkvector.x, velocity.y, -walkvector.y)
+		velocity = move_and_slide(velocity, Vector3(0, 1, 0), false, 4, 0.785398, false)
+		velocity += (gravity_magnitude * delta) * gravity_vector
 	audio()
 	if $CanvasLayer/ItemBar.get_selected_item_name() == "Flashlight":
 		$Flashlight.show()
@@ -156,9 +158,15 @@ func _input(event):
 		new_looking.x = clamp(new_looking.x, -PI/3, PI/3)
 		set_looking(new_looking)
 	if event.is_action_pressed("escape"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if in_inventory:
+			in_inventory = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			$InventoryPanel.hide()
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event.is_action_pressed("player_interact"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		if not in_inventory:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func set_height(new_height):
 	if last_height > new_height:
@@ -178,10 +186,13 @@ func onscreen_text():
 	var space_state = get_world().direct_space_state
 	var result = space_state.intersect_ray($Camera.global_transform.origin, $Camera/Pickup.global_transform.origin, [self])
 	if not result.empty():
-		if result["collider"].is_in_group("DollPart"):
-			$"CanvasLayer/Label".text = "Click to pick up" 
+		if result["collider"].is_in_group("Interactable"):
+			$"CanvasLayer/Label".text = "Click to open" 
 			if Input.is_action_just_pressed("player_interact"):
-				result["collider"].pickup()
+				$InventoryPanel.show()
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+				$InventoryPanel.display_inventory(result["collider"])
+				in_inventory = true
 		elif result["collider"].is_in_group("Hideable") and result["collider"].is_in_group("Moveable"):
 			$"CanvasLayer/Label".text = "Press H to hide\n Click to move"
 			if Input.is_action_just_pressed("player_hide"):

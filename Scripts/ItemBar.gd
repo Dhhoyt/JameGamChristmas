@@ -32,14 +32,18 @@ func update_images():
 	for i in range(len(items)):
 		get_child(i).texture = items[i].texture
 func add_item(item):
-	if len(items) < get_child_count()-1:
+	if can_add_item():
 		items.append(item)
 		update_images()
-func remove_selected_item():
-	if len(items) >= selectedNum:
-		items.remove(selectedNum)
+func take_item(index):
+	if len(items) >= index:
+		var item = items[index]
+		items.remove(index)
 		update_images()
+		return item
 func get_selected_item_name():
 	if len(items) > selectedNum:
 		return items[selectedNum].title
 	return "Empty"
+func can_add_item():
+	return len(items) < get_child_count()-1
