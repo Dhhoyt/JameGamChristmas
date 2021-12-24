@@ -23,7 +23,7 @@ func display_inventory(inventoryObject):
 	for i in range(inventoryObject.capacity):
 		gridContainer.get_child(i).show()
 		if i < len(inventoryObject.items):
-			gridContainer.get_child(i).texture_normal = inventoryObject.items[i].img
+			gridContainer.get_child(i).texture_normal = inventoryObject.items[i].get_image()
 			print(inventoryObject.items[i])
 func update_inventory():
 	for child in gridContainer.get_children():
@@ -31,7 +31,7 @@ func update_inventory():
 	for i in range(currentInventoryObject.capacity):
 		gridContainer.get_child(i).show()
 		if i < len(currentInventoryObject.items):
-			gridContainer.get_child(i).texture_normal = currentInventoryObject.items[i].img
+			gridContainer.get_child(i).texture_normal = currentInventoryObject.items[i].get_image()
 			print(currentInventoryObject.items[i])
 func remove_item(index):
 	if player.in_inventory:

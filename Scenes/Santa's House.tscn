@@ -876,10 +876,10 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.4, 2
 [node name="Interactive" parent="DetourNavigation" instance=ExtResource( 9 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.79378, -2.28481 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.62546, 2.60842, -6.7224 )
 
 [node name="Krampus" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3912, -1.33552 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.72281, -0.00429559, -1.64066 )
 
 [node name="RandomSpots" type="Spatial" parent="."]
 
@@ -948,6 +948,5 @@ autostart = true
 [node name="ChaseTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
-
 [connection signal="timeout" from="noisetimer" to="." method="_on_noisetimer_timeout"]
 [connection signal="tween_all_completed" from="SoundTween" to="." method="_on_SoundTween_tween_all_completed"]
