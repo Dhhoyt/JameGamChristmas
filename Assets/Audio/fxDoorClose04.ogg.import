@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fxDoorClose04.ogg-0d9cbbd3081e59b9913e1d8233d8ae32.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

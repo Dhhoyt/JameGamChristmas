@@ -36,3 +36,5 @@ mesh = SubResource( 1 )
 material/0 = null
 material/1 = null
 script = ExtResource( 3 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
