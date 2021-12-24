@@ -30,7 +30,7 @@ func update_images():
 	for i in range(get_child_count()):
 		get_child(i).texture_normal = CIRCLE
 	for i in range(len(items)):
-		get_child(i).texture_normal = items[i].texture
+		get_child(i).texture_normal = items[i].img
 func add_item(item):
 	if can_add_item():
 		items.append(item)
@@ -47,3 +47,5 @@ func get_selected_item_name():
 	return "Empty"
 func can_add_item():
 	return len(items) < get_child_count()-1
+func can_take_item(index):
+	return index < len(items)

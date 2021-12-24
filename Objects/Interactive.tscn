@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/MoveableCloset.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Models/House/Interactive.glb" type="PackedScene" id=2]
@@ -8,7 +8,16 @@
 [ext_resource path="res://Objects/NoisyObject.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Audio/fxSinkRunning.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Scripts/InventoryObject.gd" type="Script" id=8]
-[ext_resource path="res://Objects/InteractiveCollider.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/InventoryCollider.tscn" type="PackedScene" id=9]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.25751, 0.76026, 0.791626 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.3, 0.276841, 0.70617 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.499861, 0.867981, 0.266703 )
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Present"
@@ -39,6 +48,35 @@ surfaces/1 = {
 
 [node name="Interactive" instance=ExtResource( 2 )]
 
+[node name="BookCase" parent="InteractiveObjects" index="0"]
+script = ExtResource( 8 )
+
+[node name="InventoryCollider" parent="InteractiveObjects/BookCase" index="0" instance=ExtResource( 9 )]
+
+[node name="BookCaseBooks" parent="InteractiveObjects" index="1"]
+script = ExtResource( 8 )
+
+[node name="InventoryCollider" parent="InteractiveObjects/BookCaseBooks" index="0" instance=ExtResource( 9 )]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 2.2, -2, 8.4 )
+
+[node name="BookCaseLargeBooks" parent="InteractiveObjects" index="2"]
+script = ExtResource( 8 )
+
+[node name="InventoryCollider" parent="InteractiveObjects/BookCaseLargeBooks" index="0" instance=ExtResource( 9 )]
+
+[node name="CollisionShape" parent="InteractiveObjects/BookCaseLargeBooks/InventoryCollider" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.778357, 0 )
+shape = SubResource( 2 )
+
+[node name="BookCaseLargeBooks001" parent="InteractiveObjects" index="3"]
+script = ExtResource( 8 )
+
+[node name="InventoryCollider2" parent="InteractiveObjects/BookCaseLargeBooks001" index="0" instance=ExtResource( 9 )]
+
+[node name="CollisionShape" parent="InteractiveObjects/BookCaseLargeBooks001/InventoryCollider2" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.778357, 0 )
+shape = SubResource( 2 )
+
 [node name="Closet1" parent="InteractiveObjects" index="5"]
 script = ExtResource( 1 )
 move_dist = Vector3( -0.9, 0, 0 )
@@ -65,13 +103,48 @@ move_dist = Vector3( 0, 0, -1 )
 
 [node name="Desk" parent="InteractiveObjects" index="12"]
 script = ExtResource( 8 )
+title = "Desk"
 itemPaths = [ "res://Objects/Items/Flashlight.tscn" ]
 
-[node name="Area" parent="InteractiveObjects/Desk" index="0" instance=ExtResource( 9 )]
+[node name="InventoryCollider" parent="InteractiveObjects/Desk" index="0" instance=ExtResource( 9 )]
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, -0.0267177, 0 )
 
-[node name="CollisionShape" parent="InteractiveObjects/Desk/Area" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.306177, -0.106965 )
+[node name="Desk001" parent="InteractiveObjects" index="13"]
+script = ExtResource( 8 )
+
+[node name="InventoryCollider" parent="InteractiveObjects/Desk001" index="0" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 0, -0.101954 )
+
+[node name="CollisionShape" parent="InteractiveObjects/Desk001/InventoryCollider" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.292692, -0.106965 )
+shape = SubResource( 3 )
+
+[node name="Desk002" parent="InteractiveObjects" index="14"]
+script = ExtResource( 8 )
+
+[node name="InventoryCollider2" parent="InteractiveObjects/Desk002" index="0" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 0.00317475, -0.11003 )
+
+[node name="Desk003" parent="InteractiveObjects" index="15"]
+script = ExtResource( 8 )
+
+[node name="InventoryCollider3" parent="InteractiveObjects/Desk003" index="0" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 3.69482e-13, 0, 1, 0, -3.69482e-13, 0, 1, 0, 0.003, 0.11 )
+
+[node name="Desk004" parent="InteractiveObjects" index="16"]
+script = ExtResource( 8 )
+
+[node name="InventoryCollider4" parent="InteractiveObjects/Desk004" index="0" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, -5.68434e-14, 0, 1, 0, 5.68434e-14, 0, 1, 0, 0.003, 0.104031 )
+
+[node name="Fridge" parent="InteractiveObjects" index="17"]
+script = ExtResource( 8 )
+
+[node name="InventoryCollider" parent="InteractiveObjects/Fridge" index="0" instance=ExtResource( 9 )]
+
+[node name="CollisionShape" parent="InteractiveObjects/Fridge/InventoryCollider" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.874004, 0.0198202 )
+shape = SubResource( 4 )
 
 [node name="Present" parent="InteractiveObjects" index="21"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0, -6.5 )
@@ -128,7 +201,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862156, 0.112 )
 [node name="AudioStreamPlayer3D" parent="InteractiveObjects/SinkLv1003/StaticBody4" index="1"]
 stream = ExtResource( 7 )
 
-[editable path="InteractiveObjects/Desk/Area"]
+[editable path="InteractiveObjects/BookCaseLargeBooks/InventoryCollider"]
+
+[editable path="InteractiveObjects/BookCaseLargeBooks001/InventoryCollider2"]
+
+[editable path="InteractiveObjects/Desk001/InventoryCollider"]
+
+[editable path="InteractiveObjects/Fridge/InventoryCollider"]
 
 [editable path="InteractiveObjects/SinkLv1/StaticBody"]
 
