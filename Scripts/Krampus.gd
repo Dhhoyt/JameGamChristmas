@@ -32,6 +32,7 @@ func _process(delta):
 	if within_view():
 		state = 0
 		new_spot()
+	print(state)
 
 func _physics_process(delta):
 	if path_node < path.size():
@@ -65,6 +66,7 @@ func within_view():
 		return false
 	var space_state = get_world().direct_space_state
 	var result = space_state.intersect_ray(global_transform.origin, player.global_transform.origin, [self,player], 2)
+	print(result.empty())
 	return result.empty()
 
 func random_spot():

@@ -5,14 +5,26 @@
 
 [node name="Interactive" instance=ExtResource( 2 )]
 
+[node name="Closet1" parent="InteractiveObjects" index="5"]
+script = ExtResource( 1 )
+move_dist = Vector3( -0.9, 0, 0 )
+
+[node name="Closet1001" parent="InteractiveObjects" index="6"]
+script = ExtResource( 1 )
+move_dist = Vector3( -1, 0, 0 )
+
 [node name="Closet2" parent="InteractiveObjects" index="7"]
 script = ExtResource( 1 )
+move_dist = Vector3( 0, 0, -1 )
 
 [node name="Closet2001" parent="InteractiveObjects" index="8"]
 script = ExtResource( 1 )
+move_dist = Vector3( 0, 0, -1.2 )
 
 [node name="Closet2002" parent="InteractiveObjects" index="9"]
 script = ExtResource( 1 )
+move_dist = Vector3( 0, 0, 1 )
 
 [node name="Closet2003" parent="InteractiveObjects" index="10"]
 script = ExtResource( 1 )
+move_dist = Vector3( 0, 0, -1 )
