@@ -3,7 +3,8 @@ extends KinematicBody
 var path = []
 var path_node = 0
 
-var speed = 5
+var speed = 1
+var chase_speed = 3
 var hearing_dist = 5
 var fov = cos(PI/4)
 
@@ -22,6 +23,12 @@ func _ready():
 	new_spot()
 
 func _process(delta):
+	if state == 0:
+		$Model/AnimationPlayer.play("Chase")
+	elif state == 1:
+		$Model/AnimationPlayer.play("Wander")
+	elif state == 2:
+		$Model/AnimationPlayer.play("Wander")
 	if within_view():
 		state = 0
 		new_spot()
@@ -46,7 +53,7 @@ func _physics_process(delta):
 
 func move_to(target_pos):
 	path = nav.get_node("DetourNavigationMesh").find_path(global_transform.origin, target_pos)["points"]
-	print(randi())
+	#print(randi())
 	path_node = 0
 	
 func within_view():

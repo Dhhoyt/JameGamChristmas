@@ -48,7 +48,8 @@ var current_hide = null
 
 func _ready():
 	$CanvasLayer/ItemBar.add_item(Item.new("Flashlight", "res://Assets/UI/Icons/flashlight.png"))
-	pass
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta):
 	onscreen_text()
