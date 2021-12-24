@@ -51,6 +51,13 @@ var current_hide = null
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Doll.tscn").instance())
+	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Broom.tscn").instance())
+	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Buttons.tscn").instance())
+	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Shirt.tscn").instance())
+	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Trousers.tscn").instance())
+	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Shoes.tscn").instance())
+	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Cotton.tscn").instance())
 
 func _physics_process(delta):
 	onscreen_text()
@@ -225,7 +232,13 @@ func onscreen_text():
 			$"CanvasLayer/Label".text = "Click to build"
 			if Input.is_action_just_pressed("player_interact"):
 				$CanvasLayer/Building.show()
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+				in_inventory = true
 				inventory_type = 2
+		elif result["collider"].is_in_group("Chandelier"):
+			$"CanvasLayer/Label".text = "Click to Cut Down Chandelier"
+			if Input.is_action_just_pressed("player_interact"):
+				pass
 		else:
 			Input.is_action_just_pressed("player_interact")
 			$"CanvasLayer/Label".text = ""

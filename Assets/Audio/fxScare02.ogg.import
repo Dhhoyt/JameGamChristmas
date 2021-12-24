@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fxScare02.ogg-4f223e580c26a23d18a7c7289eba563e.oggst
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

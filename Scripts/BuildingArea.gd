@@ -19,7 +19,7 @@ func can_add_item(item):
 	if item.title in itemTitles:
 		return true
 func add_item(item):
-	get_child(item.title).texture_normal = item.get_image()
+	get_node(item.title).texture_normal = item.get_image()
 	itemsCollected += 1
 	if itemsCollected >= 7:
 		itemBar.add_item(load("res://Objects/Items/FinishedDoll.tscn").instance())

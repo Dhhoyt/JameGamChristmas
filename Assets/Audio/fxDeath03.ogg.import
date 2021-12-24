@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fxDeath03.ogg-250ba74c6e9a7a956b39749d7734bf05.oggst
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
