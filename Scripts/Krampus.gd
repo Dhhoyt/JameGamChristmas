@@ -3,7 +3,7 @@ extends KinematicBody
 var path = []
 var path_node = 0
 
-var speed = 5
+var speed = 2
 var hearing_dist = 5
 var fov = cos(PI/4)
 
