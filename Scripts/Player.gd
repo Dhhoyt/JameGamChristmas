@@ -149,7 +149,7 @@ func audio():
 		$StepAudioPlayer.stop()
 	elif $StepAudioPlayer.playing:
 		for i in enemies:
-			i.noise(global_transform.origin, 0.0001, 3)	
+			i.noise(global_transform.origin, 0.5, 3)	
 
 func _input(event):
 	if event is InputEventMouseMotion and not in_inventory:
