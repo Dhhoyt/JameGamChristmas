@@ -6,7 +6,7 @@ var path_node = 0
 var speed = 1
 var chase_speed = 3
 var hearing_dist = 5
-var fov = cos(PI/4)
+var fov = cos(PI/2)
 
 var investigated = false
 var state = 2 #0 = chase 1 = investigating 2 = wander
@@ -25,10 +25,16 @@ func _ready():
 func _process(delta):
 	if state == 0:
 		$Model/AnimationPlayer.play("Chase")
+		$Model.look_at(player.global_transform.origin, Vector3.UP)
+		$Model.rotation_degrees = Vector3(0, $Model.rotation_degrees.y - 90, 0)
 	elif state == 1:
 		$Model/AnimationPlayer.play("Wander")
+		$Model.look_at(path[path_node], Vector3.UP)
+		$Model.rotation_degrees = Vector3(0, $Model.rotation_degrees.y - 90, 0)
 	elif state == 2:
 		$Model/AnimationPlayer.play("Wander")
+		$Model.look_at(path[path_node], Vector3.UP)
+		$Model.rotation_degrees = Vector3(0, $Model.rotation_degrees.y - 90, 0)
 	if within_view():
 		state = 0
 		new_spot()
