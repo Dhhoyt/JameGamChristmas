@@ -23,6 +23,9 @@ export(float) var audio_speed : float = 1
 
 var last_height : float
 
+signal doll_placed
+signal chandelier_cut
+
 onready var standing_height : float = $CollisionShape.get_shape().get_height()
 onready var cam_stand_height : float = $Camera.translation.y
 onready var radius : float = $CollisionShape.get_shape().get_radius()
@@ -41,6 +44,7 @@ var hiding : bool = false
 var getting_in : bool = false
 var in_inventory : bool = false
 var inventory_type : int = 0
+var doll_placed : bool = false
 
 var gravity_vector : Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 var gravity_magnitude : int = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -51,13 +55,7 @@ var current_hide = null
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Doll.tscn").instance())
-	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Broom.tscn").instance())
-	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Buttons.tscn").instance())
-	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Shirt.tscn").instance())
-	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Trousers.tscn").instance())
-	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Shoes.tscn").instance())
-	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/Cotton.tscn").instance())
+	$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/FinishedDoll.tscn").instance())
 
 func _physics_process(delta):
 	onscreen_text()
@@ -235,10 +233,20 @@ func onscreen_text():
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 				in_inventory = true
 				inventory_type = 2
-		elif result["collider"].is_in_group("Chandelier"):
+		elif result["collider"].is_in_group("PlacementArea"):
+			print("BUH")
+			if $CanvasLayer/ItemBar.get_selected_item_name() == "Finished Doll":
+				print("BRUH")
+				$"CanvasLayer/Label".text = "Click to Place Doll"
+				if Input.is_action_just_pressed("player_interact"):
+					emit_signal("doll_placed")
+					$CanvasLayer/ItemBar.remove_selected_item()
+					doll_placed = true
+		elif result["collider"].is_in_group("Chandelier") and doll_placed:
 			$"CanvasLayer/Label".text = "Click to Cut Down Chandelier"
 			if Input.is_action_just_pressed("player_interact"):
-				pass
+				emit_signal("chandelier_cut")
+				
 		else:
 			Input.is_action_just_pressed("player_interact")
 			$"CanvasLayer/Label".text = ""

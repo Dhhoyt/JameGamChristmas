@@ -17,6 +17,7 @@ onready var doors = $"../DetourNavigation/Doors"
 
 var walk = preload("res://Assets/Audio/fxStep01.ogg")
 var run = preload("res://Assets/Audio/fxStep02.ogg")
+var doll_placed = false
 
 var current_priority = 0
 var noise_pos = Vector3()
@@ -33,6 +34,8 @@ func _process(delta):
 		$"../Sound Effects/Chase".volume_db = 0
 		state = 0
 		new_spot()
+	if doll_placed:
+		state = 3
 	if state == 0:
 		$krampus/AnimationPlayer.play("Chase")
 		$krampus.look_at(player.global_transform.origin, Vector3.UP)
@@ -49,7 +52,7 @@ func _process(delta):
 			$AudioStreamPlayer3D.play()
 	else:
 		$krampus/AnimationPlayer.play("Stand")
-		$krampus.look_at(path[path_node], Vector3.UP)
+		$krampus.look_at(Vector3(0, 0, -2), Vector3.UP)
 		$krampus.rotation_degrees = Vector3(0, $krampus.rotation_degrees.y-90, 0)
 	for i in doors.get_children():
 		if i.moved:
@@ -102,13 +105,16 @@ func random_spot():
 	return available[randi() % available.size()].global_transform.origin
 
 func new_spot():
-	if state == 0:
-		move_to(player.global_transform.origin)
-	elif state == 1:
-		state = 2
-		move_to(random_spot())
-	elif state == 2:
-		move_to(random_spot())
+	if doll_placed:
+		move_to(Vector3(0, 0, -4))
+	else:
+		if state == 0:
+			move_to(player.global_transform.origin)
+		elif state == 1:
+			state = 2
+			move_to(random_spot())
+		elif state == 2:
+			move_to(random_spot())
 
 func noise(pos, loudness, priority):
 	if priority >= current_priority and (pos - global_transform.origin).length() * (1/loudness) < hearing_dist and not state == 0:

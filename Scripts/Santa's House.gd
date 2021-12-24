@@ -5,6 +5,8 @@ var chaseSounds = [preload("res://Assets/Audio/fxChase01.ogg"), preload("res://A
 var ambientSounds = [preload("res://Assets/Audio/ambientBells.ogg"), preload("res://Assets/Audio/ambientCarol01.ogg"), preload("res://Assets/Audio/ambientCarol01.ogg"), preload("res://Assets/Audio/ambientCarol02.ogg"), preload("res://Assets/Audio/ambientCarol03.ogg"), preload("res://Assets/Audio/ambientCarol04.ogg"), preload("res://Assets/Audio/ambientCarol05.ogg"), preload("res://Assets/Audio/ambientElf01.ogg"), preload("res://Assets/Audio/ambientGoat.ogg")]
 
 var krampus_turn_off_dist = 1
+var DOLL_PLACE = preload("res://Objects/DollPlace.tscn")
+var PLACEMENT_AREA = preload("res://Objects/PlacementArea.tscn")
 
 func add_noisy(new_noisy):
 	noiseies.push_front(new_noisy)
@@ -13,7 +15,10 @@ func add_noisy(new_noisy):
 func remove_noisy(new_noisy):
 	noiseies.erase(new_noisy)
 	new_noisy.stop()
-	
+
+func _ready():
+	on_doll_built()
+
 func _process(delta):
 	if $Krampus.state == 0:
 		$ChaseTimer.start()
@@ -52,3 +57,13 @@ func _on_noisetimer_timeout():
 	for i in noiseies:
 		$Krampus.noise(i.global_transform.origin, 100000, 2)
 
+func on_doll_built():
+	var place = PLACEMENT_AREA.instance()
+	place.translate(Vector3(0, 0, -3))
+	add_child(place)
+func on_doll_placed():
+	var place = DOLL_PLACE.instance()
+	place.translate(Vector3(0, 0, -3))
+	$Krampus.doll_placed = true
+	$Player.doll_placed = true
+	add_child(place)
