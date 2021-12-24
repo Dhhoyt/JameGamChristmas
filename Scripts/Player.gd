@@ -209,6 +209,8 @@ func onscreen_text():
 		elif result["collider"].is_in_group("Moveable"):
 			$"CanvasLayer/Label".text = "Click to open"
 			if Input.is_action_just_pressed("player_interact"):
+				for i in enemies:
+					i.noise(result["collider"].global_transform.origin, 0.5, 1)
 				result["collider"].move()
 		elif result["collider"].is_in_group("Noisy"):
 			if not result["collider"].playing:
