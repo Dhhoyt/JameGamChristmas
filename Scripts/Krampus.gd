@@ -25,13 +25,25 @@ func _process(delta):
 	if within_view():
 		state = 0
 		new_spot()
-	for i in doors.get_children():
-		print((global_transform.origin - i.global_transform.origin).length())
-		if (global_transform.origin - i.global_transform.origin).length() < .75:
-			var facing = (path[path_node] - global_transform.origin)
-			var diff = i.global_transform.origin - global_transform.origin
-			if facing.normalized().dot(diff.normalized()) > fov:
-				i.move()
+	if state == 0:
+		$krampus/AnimationPlayer.play("Chase")
+		$krampus.look_at(player.global_transform.origin, Vector3.UP)
+		$krampus.rotation_degrees = Vector3(0, $krampus.rotation_degrees.y-90, 0)
+	elif state == 1 or state == 2:
+		$krampus/AnimationPlayer.play("Wander")
+		$krampus.look_at(path[path_node], Vector3.UP)
+		$krampus.rotation_degrees = Vector3(0, $krampus.rotation_degrees.y-90, 0)
+	else:
+		$krampus/AnimationPlayer.play("Stand")
+		$krampus.look_at(path[path_node], Vector3.UP)
+		$krampus.rotation_degrees = Vector3(0, $krampus.rotation_degrees.y-90, 0)
+	##for i in doors.get_children():
+	##	print((global_transform.origin - i.global_transform.origin).length())
+	##	if (global_transform.origin - i.global_transform.origin).length() < .75:
+	##		var facing = (path[path_node] - global_transform.origin)
+	##		var diff = i.global_transform.origin - global_transform.origin
+	##		if facing.normalized().dot(diff.normalized()) > fov:
+	##			i.move()
 
 func _physics_process(delta):
 	if path_node < path.size():
