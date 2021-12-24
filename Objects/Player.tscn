@@ -294,12 +294,9 @@ expand = true
 [node name="SpotLight" type="SpotLight" parent="Flashlight"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305715, 0.215107, -0.627 )
 
-<<<<<<< Updated upstream
-=======
 [node name="OmniLight" type="OmniLight" parent="."]
 light_energy = 0.2
 omni_range = 1.46242
->>>>>>> Stashed changes
 [connection signal="pressed" from="CanvasLayer/ItemBar/Item1" to="CanvasLayer/InventoryArea" method="remove_item_bar" binds= [ 0 ]]
 [connection signal="pressed" from="CanvasLayer/ItemBar/Item2" to="CanvasLayer/InventoryArea" method="remove_item_bar" binds= [ 1 ]]
 [connection signal="pressed" from="CanvasLayer/ItemBar/Item3" to="CanvasLayer/InventoryArea" method="remove_item_bar" binds= [ 2 ]]

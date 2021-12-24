@@ -217,6 +217,8 @@ func onscreen_text():
 				$"CanvasLayer/Label".text = "Click to stop noise"
 				if Input.is_action_just_pressed("player_interact"):
 					get_parent().remove_noisy(result["collider"])
+		elif result["collider"].is_in_group("Builder"):
+			$"CanvasLayer/Label".text = "Click to build"
 		else:
 			Input.is_action_just_pressed("player_interact")
 			$"CanvasLayer/Label".text = ""
