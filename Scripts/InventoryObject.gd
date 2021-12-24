@@ -4,15 +4,18 @@ export var itemPaths = []
 export var capacity = 4
 var items = []
 func _ready():
-	for item in itemPaths:
-		items.append(load(item))
+	for i in itemPaths:
+		var item = load(i).instance()
+		items.append(item)
 func add_item(item):
 	if len(items) < capacity:
 		items.append(item)
 func take_item(index):
-	if len(items) >= index:
+	if index < len(items):
 		var item = items[index]
 		items.remove(index)
 		return item
+func can_take_item(index):
+	return index < len(items)
 func can_add_item():
 	return len(items) < capacity

@@ -151,7 +151,7 @@ func audio():
 			i.noise(global_transform.origin, 0.0001, 3)	
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and not in_inventory:
 		var new_looking = looking
 		new_looking.y -= deg2rad(event.relative.x * sensitivity)
 		new_looking.x -= deg2rad(event.relative.y * sensitivity)
@@ -161,7 +161,7 @@ func _input(event):
 		if in_inventory:
 			in_inventory = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			$InventoryPanel.hide()
+			$CanvasLayer/InventoryArea.hide()
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event.is_action_pressed("player_interact"):
@@ -189,9 +189,9 @@ func onscreen_text():
 		if result["collider"].is_in_group("Interactable"):
 			$"CanvasLayer/Label".text = "Click to open" 
 			if Input.is_action_just_pressed("player_interact"):
-				$InventoryPanel.show()
+				$CanvasLayer/InventoryArea.show()
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-				$InventoryPanel.display_inventory(result["collider"])
+				$CanvasLayer/InventoryArea.display_inventory(result["collider"].get_parent())
 				in_inventory = true
 		elif result["collider"].is_in_group("Hideable") and result["collider"].is_in_group("Moveable"):
 			$"CanvasLayer/Label".text = "Press H to hide\n Click to move"

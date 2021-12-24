@@ -1,10 +1,8 @@
 extends Node
-class_name Item, "res://Assets/UI/Icons/circle.png"
+class_name Item, "res://Assets/UI/Icons/flashlight.png"
 export var title = "Item"
-export var icon = "res://Assets/UI/Icons/circle.png"
-var texture
+export var imgPath = "res://Assets/UI/Icons/flashlight.png"
+var img
 
-func _init(t, i):
-	title = t
-	icon = i
-	texture = load(icon)
+func _init():
+	img = load(imgPath)
