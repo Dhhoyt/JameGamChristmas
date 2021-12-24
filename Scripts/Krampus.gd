@@ -43,7 +43,7 @@ func _process(delta):
 func _physics_process(delta):
 	if path_node < path.size():
 		var direction = (path[path_node] - global_transform.origin)
-		if direction.length() < 1:
+		if direction.length() < speed * delta * 1.2:
 			path_node += 1
 			if path_node >= path.size():
 				path_node = 0
@@ -64,7 +64,7 @@ func move_to(target_pos):
 	path_node = 0
 	
 func within_view():
-	if player.hiding:
+	if player.hiding or path.size() <= path_node:
 		return false
 	var facing = (path[path_node] - global_transform.origin)
 	var diff = player.global_transform.origin - global_transform.origin
