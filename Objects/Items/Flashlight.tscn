@@ -5,4 +5,3 @@
 [node name="Item" type="Node"]
 script = ExtResource( 1 )
 title = "Flashlight"
-icon = "res://Assets/UI/Icons/flashlight.png"

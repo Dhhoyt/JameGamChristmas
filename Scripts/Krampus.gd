@@ -15,6 +15,9 @@ onready var player = $"../Player"
 onready var spots = $"../RandomSpots"
 onready var doors = $"../DetourNavigation/Doors"
 
+var walk = preload("res://Assets/Audio/fxStep01.ogg")
+var run = preload("res://Assets/Audio/fxStep02.ogg")
+
 var current_priority = 0
 var noise_pos = Vector3()
 
@@ -22,19 +25,28 @@ func _ready():
 	randomize()
 	player.add_enemy(self)
 	new_spot()
+	$AudioStreamPlayer3D.play()
 
 func _process(delta):
 	if within_view():
+		$"../SoundTween".stop_all()
+		$"../Sound Effects/Chase".volume_db = 0
 		state = 0
 		new_spot()
 	if state == 0:
 		$krampus/AnimationPlayer.play("Chase")
 		$krampus.look_at(player.global_transform.origin, Vector3.UP)
 		$krampus.rotation_degrees = Vector3(0, $krampus.rotation_degrees.y-90, 0)
+		if $AudioStreamPlayer3D.stream == walk:
+			$AudioStreamPlayer3D.stream = run
+			$AudioStreamPlayer3D.play()
 	elif state == 1 or state == 2:
 		$krampus/AnimationPlayer.play("Wander")
 		$krampus.look_at(path[path_node], Vector3.UP)
 		$krampus.rotation_degrees = Vector3(0, $krampus.rotation_degrees.y-90, 0)
+		if $AudioStreamPlayer3D.stream == run:
+			$AudioStreamPlayer3D.stream = walk
+			$AudioStreamPlayer3D.play()
 	else:
 		$krampus/AnimationPlayer.play("Stand")
 		$krampus.look_at(path[path_node], Vector3.UP)

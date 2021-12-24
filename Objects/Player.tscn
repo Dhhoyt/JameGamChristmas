@@ -36,6 +36,7 @@ playback_process_mode = 0
 
 [node name="StepAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 2 )
+max_db = -5.066
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -297,6 +298,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305715, 0.215107, -0.627 )
 [node name="OmniLight" type="OmniLight" parent="."]
 light_energy = 0.2
 omni_range = 1.46242
+
 [connection signal="pressed" from="CanvasLayer/ItemBar/Item1" to="CanvasLayer/InventoryArea" method="remove_item_bar" binds= [ 0 ]]
 [connection signal="pressed" from="CanvasLayer/ItemBar/Item2" to="CanvasLayer/InventoryArea" method="remove_item_bar" binds= [ 1 ]]
 [connection signal="pressed" from="CanvasLayer/ItemBar/Item3" to="CanvasLayer/InventoryArea" method="remove_item_bar" binds= [ 2 ]]

@@ -46,6 +46,7 @@ func switch_scene(scene):
 
 func _on_SoundTween_tween_all_completed():
 	$"Sound Effects/Chase".stop()
+	$"Sound Effects/Chase".volume_db = 0
 
 func _on_noisetimer_timeout():
 	for i in noiseies:
