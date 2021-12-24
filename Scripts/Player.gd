@@ -48,7 +48,6 @@ var enemies : Array = []
 var current_hide = null
 
 func _ready():
-	$CanvasLayer/ItemBar.add_item(Item.new("Flashlight", "res://Assets/UI/Icons/flashlight.png"))
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
