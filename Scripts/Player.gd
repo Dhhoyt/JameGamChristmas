@@ -47,6 +47,7 @@ var enemies : Array = []
 var current_hide = null
 
 func _ready():
+	$CanvasLayer/ItemBar.add_item(Item.new("Flashlight", "res://Assets/UI/Icons/flashlight.png"))
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
@@ -90,6 +91,10 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector3(0, 1, 0), false, 4, 0.785398, false)
 	velocity += (gravity_magnitude * delta) * gravity_vector
 	audio()
+	if $CanvasLayer/ItemBar.get_selected_item_name() == "Flashlight":
+		$Flashlight.show()
+	else:
+		$Flashlight.hide()
 
 func walk(delta, move_accel, max_speed, multiplier):
 	var frame_accel = (move_accel + friction) * multiplier

@@ -52,7 +52,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="ItemBar" type="HBoxContainer" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -66,14 +66,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Item" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+[node name="Item" type="TextureRect" parent="CanvasLayer/ItemBar"]
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 texture = ExtResource( 6 )
 expand = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Item"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ItemBar/Item"]
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
@@ -83,7 +83,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Item2" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+[node name="Item2" type="TextureRect" parent="CanvasLayer/ItemBar"]
 margin_left = 84.0
 margin_right = 164.0
 margin_bottom = 80.0
@@ -91,7 +91,7 @@ rect_min_size = Vector2( 80, 80 )
 texture = ExtResource( 6 )
 expand = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Item2"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ItemBar/Item2"]
 visible = false
 margin_right = 80.0
 margin_bottom = 80.0
@@ -102,7 +102,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Item3" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+[node name="Item3" type="TextureRect" parent="CanvasLayer/ItemBar"]
 margin_left = 168.0
 margin_right = 248.0
 margin_bottom = 80.0
@@ -110,7 +110,7 @@ rect_min_size = Vector2( 80, 80 )
 texture = ExtResource( 6 )
 expand = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Item3"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ItemBar/Item3"]
 visible = false
 margin_right = 80.0
 margin_bottom = 80.0
@@ -121,7 +121,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Item4" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+[node name="Item4" type="TextureRect" parent="CanvasLayer/ItemBar"]
 margin_left = 252.0
 margin_right = 332.0
 margin_bottom = 80.0
@@ -129,7 +129,7 @@ rect_min_size = Vector2( 80, 80 )
 texture = ExtResource( 6 )
 expand = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Item4"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ItemBar/Item4"]
 visible = false
 margin_right = 80.0
 margin_bottom = 80.0
