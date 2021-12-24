@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fxChandelierCrash.ogg-c5c52ad104606fcddde6d90a964cfd
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
