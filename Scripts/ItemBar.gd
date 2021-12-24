@@ -46,6 +46,6 @@ func get_selected_item_name():
 		return items[selectedNum].title
 	return "Empty"
 func can_add_item():
-	return len(items) < get_child_count()-1
+	return len(items) < get_child_count()
 func can_take_item(index):
 	return index < len(items)
