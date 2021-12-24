@@ -154,7 +154,7 @@ func audio():
 		$StepAudioPlayer.stop()
 	elif $StepAudioPlayer.playing:
 		for i in enemies:
-			i.noise(global_transform.origin, 0.0001, 3)	
+			i.noise(global_transform.origin, 0.5, 3)	
 
 func _input(event):
 	if event is InputEventMouseMotion and not in_inventory:
@@ -214,6 +214,8 @@ func onscreen_text():
 		elif result["collider"].is_in_group("Moveable"):
 			$"CanvasLayer/Label".text = "Click to open"
 			if Input.is_action_just_pressed("player_interact"):
+				for i in enemies:
+					i.noise(result["collider"].global_transform.origin, 0.5, 1)
 				result["collider"].move()
 		elif result["collider"].is_in_group("Noisy"):
 			if not result["collider"].playing:
