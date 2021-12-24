@@ -23,15 +23,15 @@ func _ready():
 	new_spot()
 
 func _process(delta):
-	if state == 0:
+	if state == 0:#Chase
 		$Model/AnimationPlayer.play("Chase")
 		$Model.look_at(player.global_transform.origin, Vector3.UP)
 		$Model.rotation_degrees = Vector3(0, $Model.rotation_degrees.y - 90, 0)
-	elif state == 1:
+	elif state == 1:#Investigating
 		$Model/AnimationPlayer.play("Wander")
 		$Model.look_at(path[path_node], Vector3.UP)
 		$Model.rotation_degrees = Vector3(0, $Model.rotation_degrees.y - 90, 0)
-	elif state == 2:
+	elif state == 2:#Wander
 		$Model/AnimationPlayer.play("Wander")
 		$Model.look_at(path[path_node], Vector3.UP)
 		$Model.rotation_degrees = Vector3(0, $Model.rotation_degrees.y - 90, 0)
