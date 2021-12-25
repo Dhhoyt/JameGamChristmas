@@ -27,6 +27,7 @@ var last_height : float
 
 signal doll_placed
 signal chandelier_cut
+signal win
 
 onready var standing_height : float = $CollisionShape.get_shape().get_height()
 onready var cam_stand_height : float = $Camera.translation.y
@@ -37,7 +38,6 @@ func set_looking(new_looking):
 	looking = new_looking
 	$Camera.rotation.y = looking.y
 	$Camera.rotation.x = looking.x
-	$Flashlight.rotation.y = looking.y
 	
 var velocity : Vector3 = Vector3()
 
@@ -47,6 +47,7 @@ var getting_in : bool = false
 var in_inventory : bool = false
 var inventory_type : int = 0
 var doll_placed : bool = false
+var open_inventory_delay : bool = false
 var current_stamina : float = 5
 
 var gravity_vector : Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
@@ -61,9 +62,20 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#$CanvasLayer/ItemBar.add_item(load("res://Objects/Items/FinishedDoll.tscn").instance())
 
+func _process(delta):
+	audio()
+	if $CanvasLayer/ItemBar.get_selected_item_name() == "Flashlight":
+		$Camera/Flashlight.show()
+	else:
+		$Camera/Flashlight.hide()
+	if velocity.length() <= max_walk_speed or hiding or getting_in:
+		if current_stamina < max_stamina:
+			current_stamina += stamina_recharge * delta
+	$CanvasLayer/SprintBar.rect_scale = Vector2(current_stamina/max_stamina, 1)
+
 func _physics_process(delta):
-	onscreen_text()
 	if not in_inventory:
+		onscreen_text()
 		if not $Crouch.is_active():
 			if Input.is_action_pressed("player_crouch") and not crouching:
 				crouching = true
@@ -103,15 +115,6 @@ func _physics_process(delta):
 		velocity = Vector3(walkvector.x, velocity.y, -walkvector.y)
 		velocity = move_and_slide(velocity, Vector3(0, 1, 0), false, 4, 0.785398, false)
 		velocity += (gravity_magnitude * delta) * gravity_vector
-	audio()
-	if $CanvasLayer/ItemBar.get_selected_item_name() == "Flashlight":
-		$Flashlight.show()
-	else:
-		$Flashlight.hide()
-	if velocity.length_squared() <= 2:
-		if current_stamina < max_stamina:
-			current_stamina += stamina_recharge * delta
-	$CanvasLayer/SprintBar.rect_scale = Vector2(current_stamina/max_stamina, 1)
 
 func walk(delta, move_accel, max_speed, multiplier):
 	var frame_accel = (move_accel + friction) * multiplier
@@ -173,13 +176,13 @@ func _input(event):
 		new_looking.x = clamp(new_looking.x, -PI/3, PI/3)
 		set_looking(new_looking)
 	if event.is_action_pressed("escape"):
-		if in_inventory:
-			in_inventory = false
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			$CanvasLayer/InventoryArea.hide()
-			$CanvasLayer/Building.hide()
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if event.is_action_pressed("exit_inventory") and in_inventory:
+		in_inventory = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		$CanvasLayer/InventoryArea.hide()
+		$CanvasLayer/Building.hide()
+		open_inventory_delay = true
 	if event.is_action_pressed("player_interact"):
 		if not in_inventory:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -195,7 +198,7 @@ func set_height(new_height):
 
 func onscreen_text():
 	if hiding:
-		$"CanvasLayer/Label".text = "Click to get out"
+		$"CanvasLayer/Label".text = "Press E to get out"
 		if Input.is_action_just_pressed("player_interact"):
 			do_hide(current_hide)
 		return
@@ -203,42 +206,44 @@ func onscreen_text():
 	var result = space_state.intersect_ray($Camera.global_transform.origin, $Camera/Pickup.global_transform.origin, [self])
 	if not result.empty():
 		if result["collider"].is_in_group("Interactable"):
-			$"CanvasLayer/Label".text = "Click to open" 
+			$"CanvasLayer/Label".text = "E to open" 
 			if Input.is_action_just_pressed("player_interact"):
-				$CanvasLayer/InventoryArea.show()
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-				$CanvasLayer/InventoryArea.display_inventory(result["collider"].get_parent())
-				in_inventory = true
-				inventory_type = 1
+				if open_inventory_delay:
+					open_inventory_delay = false
+				else:
+					$CanvasLayer/InventoryArea.show()
+					Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+					$CanvasLayer/InventoryArea.display_inventory(result["collider"].get_parent())
+					in_inventory = true
+					inventory_type = 1
 		elif result["collider"].is_in_group("Hideable") and result["collider"].is_in_group("Moveable"):
-			$"CanvasLayer/Label".text = "Press H to hide\n Click to move"
-			if Input.is_action_just_pressed("player_hide"):
-				do_hide(result["collider"])
+			$"CanvasLayer/Label".text = "E to hide\n Click to move"
 			if Input.is_action_just_pressed("player_interact"):
+				do_hide(result["collider"])
+			if Input.is_action_just_pressed("player_affect"):
 				result["collider"].move()
 		elif result["collider"].is_in_group("Hideable"):
-			$"CanvasLayer/Label".text = "Press H to hide"
-			if Input.is_action_just_pressed("player_hide"):
-				print("f")
+			$"CanvasLayer/Label".text = "E to hide"
+			if Input.is_action_just_pressed("player_interact"):
 				do_hide(result["collider"])
 		elif result["collider"].is_in_group("Moveable"):
-			$"CanvasLayer/Label".text = "Click to open"
-			if Input.is_action_just_pressed("player_interact"):
+			$"CanvasLayer/Label".text = result["collider"].get_interaction_text()
+			if Input.is_action_just_pressed("player_affect"):
 				for i in enemies:
 					i.noise(result["collider"].global_transform.origin, 0.5, 1)
 				result["collider"].move()
 		elif result["collider"].is_in_group("Noisy"):
 			if not result["collider"].playing:
-				$"CanvasLayer/Label".text = "Click to make noise"
+				$"CanvasLayer/Label".text = "E to make noise"
 				if Input.is_action_just_pressed("player_interact"):
 					get_parent().add_noisy(result["collider"])
 			else: 
-				$"CanvasLayer/Label".text = "Click to stop noise"
+				$"CanvasLayer/Label".text = "E to stop noise"
 				if Input.is_action_just_pressed("player_interact"):
 					get_parent().remove_noisy(result["collider"])
 		elif result["collider"].is_in_group("Builder"):
-			$"CanvasLayer/Label".text = "Click to build"
-			if Input.is_action_just_pressed("player_interact"):
+			$"CanvasLayer/Label".text = "E to build"
+			if Input.is_action_just_released("player_interact"):
 				$CanvasLayer/Building.show()
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 				in_inventory = true
@@ -246,15 +251,15 @@ func onscreen_text():
 		elif result["collider"].is_in_group("PlacementArea"):
 			if $CanvasLayer/ItemBar.get_selected_item_name() == "Finished Doll":
 				$"CanvasLayer/Label".text = "Click to Place Doll"
-				if Input.is_action_just_pressed("player_interact"):
+				if Input.is_action_just_pressed("player_affect") or Input.is_action_just_pressed("player_interact"):
 					emit_signal("doll_placed")
 					$CanvasLayer/ItemBar.remove_selected_item()
 					doll_placed = true
 		elif result["collider"].is_in_group("Chandelier") and doll_placed:
 			if $CanvasLayer/ItemBar.get_selected_item_name() == "Knife":
 				$"CanvasLayer/Label".text = "Click to Cut Down Chandelier"
-				if Input.is_action_just_pressed("player_interact"):
-					get_tree().change_scene("res://Scenes/WinScene.tscn")
+				if Input.is_action_just_pressed("player_affect") or Input.is_action_just_pressed("player_interact"):
+					emit_signal("win")
 				
 		else:
 			Input.is_action_just_pressed("player_interact")

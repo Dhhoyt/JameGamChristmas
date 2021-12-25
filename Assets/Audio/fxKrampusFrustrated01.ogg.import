@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fxKrampusFrustrated01.ogg-7965e07b8e6e78487347ee179ab38446.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/fxKrampusFrustrated01.ogg"
+dest_files=[ "res://.import/fxKrampusFrustrated01.ogg-7965e07b8e6e78487347ee179ab38446.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

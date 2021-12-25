@@ -11,5 +11,5 @@ dest_files=[ "res://.import/ambientSynth01.ogg-71166980054aafbd3c33d4179e6d4dd3.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

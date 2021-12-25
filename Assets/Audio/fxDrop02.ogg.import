@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fxDrop02.ogg-64015b9136dbeed01d5e4466279f00ab.oggstr
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

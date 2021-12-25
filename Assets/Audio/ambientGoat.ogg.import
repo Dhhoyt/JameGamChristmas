@@ -11,5 +11,5 @@ dest_files=[ "res://.import/ambientGoat.ogg-b7fefe97473800fbbb3eb0e0c15c3309.ogg
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

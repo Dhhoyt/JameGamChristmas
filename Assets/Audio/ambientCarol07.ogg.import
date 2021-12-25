@@ -11,5 +11,5 @@ dest_files=[ "res://.import/ambientCarol07.ogg-8d68fa90c7c636f124ba7c1943024383.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/ambientElf01.ogg-68a0d08929abd07a64d83251fc15207d.og
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

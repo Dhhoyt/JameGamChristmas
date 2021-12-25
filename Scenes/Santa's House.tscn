@@ -1055,8 +1055,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.228708, 3.76976, -10.6508 )
 stream = ExtResource( 14 )
 autoplay = true
 [connection signal="doll_placed" from="Player" to="." method="on_doll_placed"]
+[connection signal="win" from="Player" to="." method="on_win"]
+[connection signal="item_added" from="Player/CanvasLayer/ItemBar" to="." method="on_item_pickup"]
 [connection signal="doll_built" from="Player/CanvasLayer/Building" to="." method="on_doll_built"]
 [connection signal="timeout" from="noisetimer" to="." method="_on_noisetimer_timeout"]
+[connection signal="timeout" from="Sound Effects/AmbientTimer" to="." method="play_ambient"]
 [connection signal="tween_all_completed" from="SoundTween" to="." method="_on_SoundTween_tween_all_completed"]
 
 [editable path="DetourNavigation/Interactive"]
@@ -1082,3 +1085,5 @@ autoplay = true
 [editable path="DetourNavigation/Interactive/InteractiveObjects/SinkLv1003/StaticBody4"]
 
 [editable path="Player"]
+
+[editable path="Sound Effects"]

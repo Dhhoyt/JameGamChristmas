@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fxClosetSlide.ogg-3d09513176dc0e34a7105636eb43150e.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

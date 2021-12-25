@@ -17,10 +17,10 @@ func _ready():
 		gridContainer.get_child(i).connect("pressed", self, "remove_item", [i])
 func display_inventory(inventoryObject):
 	currentInventoryObject = inventoryObject
+	$Label.text = inventoryObject.title
 	for child in gridContainer.get_children():
 		child.hide()
 		child.texture_normal = CIRCLE
-	print(gridContainer.get_children().size())
 	for i in range(inventoryObject.capacity):
 		gridContainer.get_child(i).show()
 		if i < len(inventoryObject.items):

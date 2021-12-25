@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/SceneController.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/TitleScreen.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer2/Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer2/Blackout:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer2/Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer2/Blackout:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Root" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="TransitionAnimations" type="AnimationPlayer" parent="."]
+anims/FadeIn = SubResource( 1 )
+anims/FadeOut = SubResource( 2 )
+
+[node name="Current" type="Spatial" parent="."]
+
+[node name="TitleScreen" parent="Current" instance=ExtResource( 3 )]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Blackout" type="Panel" parent="CanvasLayer2"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="switch_scene" from="Current/TitleScreen" to="." method="switch_scene"]

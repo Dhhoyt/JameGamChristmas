@@ -19,3 +19,6 @@ func move():
 		transform.origin += move_dist
 	moved = not moved
 	add_child(scene.instance())
+
+func get_interaction_text():
+	return "Click to move"

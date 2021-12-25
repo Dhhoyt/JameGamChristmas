@@ -32,6 +32,12 @@ current = true
 [node name="Pickup" type="Spatial" parent="Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 
+[node name="Flashlight" type="Spatial" parent="Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.441033, 0 )
+
+[node name="SpotLight" type="SpotLight" parent="Camera/Flashlight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305715, 0.215107, -0.627 )
+
 [node name="Crouch" type="Tween" parent="."]
 playback_process_mode = 0
 
@@ -455,11 +461,6 @@ __meta__ = {
 }
 
 [node name="Hide" type="Tween" parent="."]
-
-[node name="Flashlight" type="Spatial" parent="."]
-
-[node name="SpotLight" type="SpotLight" parent="Flashlight"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305715, 0.215107, -0.627 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 light_energy = 0.2

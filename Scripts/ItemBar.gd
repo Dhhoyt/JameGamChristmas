@@ -2,6 +2,7 @@ extends HBoxContainer
 var selectedNum = 0
 var items = []
 const CIRCLE = preload("res://Assets/UI/Icons/circle.png")
+signal item_added
 func _input(event):
 	if event.is_action_pressed("item1"):
 		selectedNum = 0
@@ -33,6 +34,7 @@ func update_images():
 		get_child(i).texture_normal = items[i].get_image()
 func add_item(item):
 	if can_add_item():
+		emit_signal("item_added")
 		items.append(item)
 		update_images()
 func take_item(index):

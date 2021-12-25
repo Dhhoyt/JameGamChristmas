@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fxWoodSlideOpenClose.ogg-b618c0f6eacc290377a75bed30a
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

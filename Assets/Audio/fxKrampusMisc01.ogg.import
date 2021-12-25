@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fxKrampusMisc01.ogg-77523cb9992da81e0100811199374956.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/fxKrampusMisc01.ogg"
+dest_files=[ "res://.import/fxKrampusMisc01.ogg-77523cb9992da81e0100811199374956.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

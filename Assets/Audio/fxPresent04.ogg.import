@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fxPresent04.ogg-2233ad6d258d69d3d2b88906a5769494.ogg
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

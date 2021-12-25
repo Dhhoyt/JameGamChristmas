@@ -3,10 +3,11 @@ extends KinematicBody
 var path = []
 var path_node = 0
 
-var speed = 1.5
-var chase_speed = 2
+var speed = 1
+var chase_speed = 2.5
 var hearing_dist = 5
 var fov = cos(PI/2)
+var enabled : bool = true
 
 var investigated = false
 var state = 2 #0 = chase 1 = investigating 2 = wander
@@ -27,7 +28,6 @@ func _ready():
 	randomize()
 	player.add_enemy(self)
 	new_spot()
-	$AudioStreamPlayer3D.play()
 
 func _process(delta):
 	if within_view():
@@ -41,22 +41,16 @@ func _process(delta):
 		$krampus/AnimationPlayer.play("Chase")
 		$krampus.look_at(player.global_transform.origin, Vector3.UP)
 		$krampus.rotation_degrees = Vector3(0, $krampus.rotation_degrees.y-90, 0)
-		if $AudioStreamPlayer3D.stream == walk:
-			$AudioStreamPlayer3D.stream = run
-			$AudioStreamPlayer3D.play()
 	elif state == 1 or state == 2:
 		$krampus/AnimationPlayer.play("Wander")
 		$krampus.look_at(path[path_node], Vector3.UP)
 		$krampus.rotation_degrees = Vector3(0, $krampus.rotation_degrees.y-90, 0)
-		if $AudioStreamPlayer3D.stream == run:
-			$AudioStreamPlayer3D.stream = walk
-			$AudioStreamPlayer3D.play()
 	else:
 		$krampus/AnimationPlayer.play("Stand")
 		$krampus.look_at(Vector3(0, 0, -2), Vector3.UP)
 		$krampus.rotation_degrees = Vector3(0, $krampus.rotation_degrees.y-90, 0)
 	for i in doors.get_children():
-		if i.moved:
+		if i.open:
 			continue
 		if not (global_transform.origin - i.global_transform.origin).length() < .75:
 			continue
@@ -68,7 +62,7 @@ func _process(delta):
 func _physics_process(delta):
 	if path_node < path.size():
 		var direction = (path[path_node] - global_transform.origin)
-		if direction.length() < delta * (chase_speed if (state == 0) else speed) * 1.2:
+		if direction.length() < delta * get_speed() * 1.2:
 			path_node += 1
 			if path_node >= path.size():
 				path_node = 0
@@ -78,7 +72,7 @@ func _physics_process(delta):
 				new_spot()
 				return
 		direction = (path[path_node] - global_transform.origin)
-		move_and_slide(direction.normalized() * (chase_speed if (state == 0) else speed), Vector3.UP)
+		move_and_slide(direction.normalized() * get_speed(), Vector3.UP)
 	else:
 		new_spot()
 
@@ -122,3 +116,25 @@ func noise(pos, loudness, priority):
 		current_priority = priority
 		state = 1
 		move_to(pos)
+func get_speed():
+	return (chase_speed if (state == 0) else speed)
+func step_noise():
+	if not $StepNoise.playing:
+		$StepNoise.play()
+		$StepNoise.pitch_scale = rand_range(0.8, 1.2)
+		$StepTimer.start(2/(get_speed()*2))
+func enable():
+	if not enabled:
+		show()
+		set_process(true)
+		set_physics_process(true)
+		$StepTimer.start()
+		enabled = true
+func disable():
+	if enabled:
+		hide()
+		set_process(false)
+		set_physics_process(false)
+		$StepTimer.stop()
+		$StepNoise.stop()
+		enabled = false

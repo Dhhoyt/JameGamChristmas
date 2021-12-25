@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fxFlush.ogg-c5a0ba8220a26ef89a9abce09b9aaca3.oggstr"
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
