@@ -30,6 +30,17 @@ material/1 = SubResource( 1 )
 [node name="SofaDouble" parent="StaticObjects" index="27"]
 transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 7, 2, -10.0677 )
 
+[node name="Star" parent="StaticObjects/Tree" index="0"]
+cast_shadow = 0
+
+[node name="OmniLight" type="OmniLight" parent="StaticObjects/Tree/Star" index="0"]
+transform = Transform( 1, -5.96046e-08, 5.48182e-08, 0, 1, 6.91805e-08, 0, 0, 1, 0, 0, -0.29026 )
+shadow_enabled = true
+shadow_color = Color( 0.709804, 0.709804, 0.709804, 1 )
+shadow_bias = 0.39
+omni_range = 9.0
+omni_attenuation = 4.4383
+
 [node name="Lights" type="Spatial" parent="." index="14"]
 
 [node name="Fireplace" type="OmniLight" parent="Lights" index="0"]

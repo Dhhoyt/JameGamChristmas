@@ -1048,6 +1048,7 @@ autoplay = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.228708, 3.76976, -10.6508 )
 stream = ExtResource( 14 )
 autoplay = true
+
 [connection signal="doll_placed" from="Player" to="." method="on_doll_placed"]
 [connection signal="win" from="Player" to="." method="on_win"]
 [connection signal="item_added" from="Player/CanvasLayer/ItemBar" to="." method="on_item_pickup"]
@@ -1057,27 +1058,16 @@ autoplay = true
 [connection signal="tween_all_completed" from="SoundTween" to="." method="_on_SoundTween_tween_all_completed"]
 
 [editable path="DetourNavigation/Interactive"]
-
 [editable path="DetourNavigation/Interactive/InteractiveObjects/Bedside Table/InventoryCollider"]
-
 [editable path="DetourNavigation/Interactive/InteractiveObjects/BookCase/InventoryCollider"]
-
 [editable path="DetourNavigation/Interactive/InteractiveObjects/BookCaseLargeBooks/InventoryCollider"]
-
 [editable path="DetourNavigation/Interactive/InteractiveObjects/BookCaseLargeBooks001/InventoryCollider2"]
-
 [editable path="DetourNavigation/Interactive/InteractiveObjects/Desk001/InventoryCollider"]
-
 [editable path="DetourNavigation/Interactive/InteractiveObjects/Fridge/InventoryCollider"]
-
 [editable path="DetourNavigation/Interactive/InteractiveObjects/SinkLv1/StaticBody"]
-
 [editable path="DetourNavigation/Interactive/InteractiveObjects/SinkLv1001/StaticBody2"]
-
 [editable path="DetourNavigation/Interactive/InteractiveObjects/SinkLv1002/StaticBody3"]
-
 [editable path="DetourNavigation/Interactive/InteractiveObjects/SinkLv1003/StaticBody4"]
-
+[editable path="DetourNavigation/Interactive/InteractiveObjects/TV/StaticBody"]
 [editable path="Player"]
-
 [editable path="Sound Effects"]
