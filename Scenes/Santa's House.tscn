@@ -926,12 +926,6 @@ transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, -0.1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00607872, 0.404152, -0.00366294 )
 shape = SubResource( 63 )
 
-[node name="Desk001" parent="DetourNavigation/Interactive/InteractiveObjects" index="15"]
-itemPaths = [ "res://Objects/Items/Books.tscn", "res://Objects/Items/Buttons.tscn" ]
-
-[node name="Desk002" parent="DetourNavigation/Interactive/InteractiveObjects" index="16"]
-itemPaths = [ "res://Objects/Items/Broom.tscn" ]
-
 [node name="CollisionShape" type="CollisionShape" parent="DetourNavigation/Interactive/InteractiveObjects/Desk002/InventoryCollider2" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.299827, -0.102019 )
 shape = SubResource( 64 )

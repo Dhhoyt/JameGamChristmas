@@ -2,12 +2,15 @@
 
 [ext_resource path="res://Scripts/InventoryObject.gd" type="Script" id=1]
 
-
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.5, 1, 0.5 )
 
-[node name="InventoryArea" type="Area"]
+[node name="InventoryArea" type="MeshInstance"]
 script = ExtResource( 1 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="StaticBody" type="StaticBody" parent="." groups=[
+"Interactable",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 shape = SubResource( 1 )

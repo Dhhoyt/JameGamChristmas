@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "MeshInstance",
+"class": "InventoryObject",
+"language": "GDScript",
+"path": "res://Scripts/InventoryObject.gd"
+}, {
 "base": "Node",
 "class": "Item",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/Scene.gd"
 } ]
 _global_script_class_icons={
+"InventoryObject": "",
 "Item": "res://Assets/UI/Icons/flashlight.png",
 "Scene": ""
 }

@@ -4,7 +4,7 @@ export(NodePath) var playerPath
 signal doll_built
 var itemBar
 var player
-var itemTitles = ["Doll", "Broom", "Buttons", "Cotton", "Shirt", "Trousers", "Shoes"]
+var itemTitles = ["Doll", "Hat", "Buttons", "Cotton", "Shirt", "Trousers", "Shoes"]
 var itemsCollected = 0
 const CIRCLE = preload("res://Assets/UI/Icons/circle.png")
 
@@ -25,7 +25,7 @@ func add_item(item):
 		emit_signal("doll_built")
 		itemBar.add_item(load("res://Objects/Items/FinishedDoll.tscn").instance())
 		$Doll.texture_normal = CIRCLE
-		$Broom.texture_normal = CIRCLE
+		$Hat.texture_normal = CIRCLE
 		$Buttons.texture_normal = CIRCLE
 		$Shirt.texture_normal = CIRCLE
 		$Cotton.texture_normal = CIRCLE

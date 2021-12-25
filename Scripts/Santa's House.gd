@@ -7,6 +7,8 @@ var ambientSounds = [preload("res://Assets/Audio/ambientBells.ogg"), preload("re
 var krampus_turn_off_dist = 1
 var DOLL_PLACE = preload("res://Objects/DollPlace.tscn")
 var PLACEMENT_AREA = preload("res://Objects/PlacementArea.tscn")
+var ITEMS_TO_POPULATE = [preload("res://Objects/Items/Buttons.tscn"), preload("res://Objects/Items/Cotton.tscn"), preload("res://Objects/Items/Hat.tscn"), preload("res://Objects/Items/Knife.tscn"), preload("res://Objects/Items/Shirt.tscn"), preload("res://Objects/Items/Shoes.tscn"), preload("res://Objects/Items/Trousers.tscn")]
+var JUNK_ITEMS = [preload("res://Objects/Items/Books.tscn"), preload("res://Objects/Items/Broom.tscn"), preload("res://Objects/Items/Papers.tscn"), preload("res://Objects/Items/Pencil.tscn")]
 
 func add_noisy(new_noisy):
 	noiseies.push_front(new_noisy)
@@ -18,6 +20,17 @@ func remove_noisy(new_noisy):
 
 func _ready():
 	$Krampus.disable()
+	var inventories = get_tree().get_nodes_in_group("Interactable")
+	while len(ITEMS_TO_POPULATE) > 0:
+		var inventory = inventories[randi()%len(inventories)]
+		if inventory.get_parent().can_add_item():
+			var item_index = randi()%len(ITEMS_TO_POPULATE)
+			inventory.get_parent().add_item(ITEMS_TO_POPULATE[item_index].instance())
+			ITEMS_TO_POPULATE.remove(item_index)
+			if inventory.get_parent().can_add_item():
+				inventory.get_parent().add_item(JUNK_ITEMS[randi()%len(JUNK_ITEMS)].instance())
+			if inventory.get_parent().can_add_item():
+				inventory.get_parent().add_item(JUNK_ITEMS[randi()%len(JUNK_ITEMS)].instance())
 
 func _process(delta):
 	if $Krampus.state == 0:

@@ -205,7 +205,20 @@ func onscreen_text():
 	var space_state = get_world().direct_space_state
 	var result = space_state.intersect_ray($Camera.global_transform.origin, $Camera/Pickup.global_transform.origin, [self])
 	if not result.empty():
-		if result["collider"].is_in_group("Interactable"):
+		if result["collider"].is_in_group("Interactable") and result["collider"].is_in_group("Moveable"):
+			$"CanvasLayer/Label".text = "E to open\n Click to move"
+			if Input.is_action_just_pressed("player_interact"):
+				if open_inventory_delay:
+					open_inventory_delay = false
+				else:
+					$CanvasLayer/InventoryArea.show()
+					Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+					$CanvasLayer/InventoryArea.display_inventory(result["collider"].get_parent())
+					in_inventory = true
+					inventory_type = 1
+			if Input.is_action_just_pressed("player_affect"):
+				result["collider"].move()
+		elif result["collider"].is_in_group("Interactable"):
 			$"CanvasLayer/Label".text = "E to open" 
 			if Input.is_action_just_pressed("player_interact"):
 				if open_inventory_delay:
@@ -244,10 +257,13 @@ func onscreen_text():
 		elif result["collider"].is_in_group("Builder"):
 			$"CanvasLayer/Label".text = "E to build"
 			if Input.is_action_just_released("player_interact"):
-				$CanvasLayer/Building.show()
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-				in_inventory = true
-				inventory_type = 2
+				if open_inventory_delay:
+					open_inventory_delay = false
+				else:
+					$CanvasLayer/Building.show()
+					Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+					in_inventory = true
+					inventory_type = 2
 		elif result["collider"].is_in_group("PlacementArea"):
 			if $CanvasLayer/ItemBar.get_selected_item_name() == "Finished Doll":
 				$"CanvasLayer/Label".text = "Click to Place Doll"

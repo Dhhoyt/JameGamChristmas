@@ -1,4 +1,5 @@
 extends MeshInstance
+class_name InventoryObject
 export var title = "Inventory"
 export var itemPaths = []
 export var capacity = 4
