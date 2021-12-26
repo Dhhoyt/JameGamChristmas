@@ -30,16 +30,23 @@ func _ready():
 	new_spot()
 
 func _process(delta):
+	if doll_placed:
+		state = 3
+		new_spot()
+		$krampus/AnimationPlayer.play("Wander")
+		if not path[path_node] == $krampus.global_transform.origin:
+			$krampus.look_at(path[path_node], Vector3.UP)
+			$krampus.rotation_degrees = Vector3(0, $krampus.rotation_degrees.y-90, 0)
+		return
 	if within_view():
 		$"../SoundTween".stop_all()
 		$"../Sound Effects/Chase".volume_db = 0
 		state = 0
 		new_spot()
-	if doll_placed:
-		state = 3
+	
 	if state == 0:
 		$krampus/AnimationPlayer.play("Chase")
-		$krampus.look_at(player.global_transform.origin, Vector3.UP)
+		$krampus.look_at(path[path_node], Vector3.UP)
 		$krampus.rotation_degrees = Vector3(0, $krampus.rotation_degrees.y-90, 0)
 	elif state == 1 or state == 2:
 		$krampus/AnimationPlayer.play("Wander")
@@ -128,10 +135,12 @@ func enable():
 		show()
 		set_process(true)
 		set_physics_process(true)
+		$StepNoise.play()
 		$StepTimer.start()
 		enabled = true
 func disable():
 	if enabled:
+		print("disabled")
 		hide()
 		set_process(false)
 		set_physics_process(false)

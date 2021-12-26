@@ -17,4 +17,5 @@ unit_size = 5.0
 
 [node name="StepTimer" type="Timer" parent="."]
 one_shot = true
+
 [connection signal="timeout" from="StepTimer" to="." method="step_noise"]
